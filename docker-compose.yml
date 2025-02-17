@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: strapi_backend
+    restart: always
+    environment:
+      NODE_ENV: development
+      DATABASE_CLIENT: sqlite
+      DATABASE_FILENAME: /srv/app/data.db
+      ADMIN_JWT_SECRET: my_admin_secret
+      API_TOKEN_SALT: my_api_salt
+      APP_KEYS: my_app_key_1,my_app_key_2
+    ports:
+      - "1337:1337"
+    volumes:
+      - ./backend:/srv/app
+      - /srv/app/node_modules
+
+  frontend:
+    build: ./frontend
+    container_name: vite_frontend
+    restart: always
+    environment:
+      VITE_API_URL: http://localhost:1337/api
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/srv/app
+      - /srv/app/node_modules

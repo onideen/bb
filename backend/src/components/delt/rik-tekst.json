@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_delt_rik_teksts",
+  "info": {
+    "displayName": "Rik tekst",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "innhold": {
+      "type": "blocks"
+    }
+  }
+}

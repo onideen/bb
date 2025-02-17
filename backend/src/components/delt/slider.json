@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_delt_sliders",
+  "info": {
+    "displayName": "slider",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "filer": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
