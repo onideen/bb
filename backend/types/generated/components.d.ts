@@ -60,7 +60,7 @@ export interface SharedRichText extends Struct.ComponentSchema {
   collectionName: 'components_shared_rich_texts';
   info: {
     description: '';
-    displayName: 'Rich text';
+    displayName: 'Rik tekst';
     icon: 'align-justify';
   };
   attributes: {

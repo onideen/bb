@@ -4,8 +4,8 @@
   "info": {
     "singularName": "about",
     "pluralName": "abouts",
-    "displayName": "About",
-    "description": "Write about yourself and the content you create"
+    "displayName": "Om Oss",
+    "description": "Skriv om organisasjonen"
   },
   "options": {
     "draftAndPublish": false
