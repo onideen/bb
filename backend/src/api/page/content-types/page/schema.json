@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page",
     "pluralName": "pages",
-    "displayName": "Sider"
+    "displayName": "Side",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,12 +16,13 @@
       "type": "string"
     },
     "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "blocks": {
       "type": "dynamiczone",
@@ -30,6 +32,12 @@
         "shared.quote",
         "shared.media"
       ]
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "inversedBy": "pages"
     }
   }
 }
