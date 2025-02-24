@@ -38,6 +38,11 @@
       "relation": "manyToMany",
       "target": "api::article.article",
       "inversedBy": "pages"
+    },
+    "slug": {
+      "type": "string",
+      "unique": true,
+      "required": true
     }
   }
 }

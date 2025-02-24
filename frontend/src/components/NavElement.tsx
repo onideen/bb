@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 
 interface NavElementProps {
-  title: string,
-  to: string,
+  title: string;
+  to: string;
   active?: boolean;
 }
 

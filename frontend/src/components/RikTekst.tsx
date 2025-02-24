@@ -1,11 +1,6 @@
-import { BlocksContent, BlocksRenderer } from "@strapi/blocks-react-renderer";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import { RichTextBlock } from "../types/content-types";
 
-export interface RikTekst {
-  __component?: "delt.rik-tekst";
-  id?: number;
-  innhold: BlocksContent;
-}
-
-export function RikTekst({ innhold, ...props }: RikTekst) {
-  return <BlocksRenderer content={innhold} {...props} />;
+export function RichTextBlockRenderer({ innhold }: RichTextBlock) {
+  return <BlocksRenderer content={innhold} />;
 }

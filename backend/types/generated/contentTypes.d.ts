@@ -547,7 +547,7 @@ export interface ApiOmOssOmOss extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    blokker: Schema.Attribute.DynamicZone<['delt.media', 'delt.rik-tekst']>;
+    blokker: Schema.Attribute.DynamicZone<[]>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -589,6 +589,9 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

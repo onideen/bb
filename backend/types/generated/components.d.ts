@@ -1,38 +1,5 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface DeltMedia extends Struct.ComponentSchema {
-  collectionName: 'components_delt_media';
-  info: {
-    description: '';
-    displayName: 'Media';
-  };
-  attributes: {
-    file: Schema.Attribute.Media<'images' | 'videos'>;
-  };
-}
-
-export interface DeltRikTekst extends Struct.ComponentSchema {
-  collectionName: 'components_delt_rik_teksts';
-  info: {
-    description: '';
-    displayName: 'Rik tekst';
-  };
-  attributes: {
-    innhold: Schema.Attribute.Blocks;
-  };
-}
-
-export interface DeltSlider extends Struct.ComponentSchema {
-  collectionName: 'components_delt_sliders';
-  info: {
-    description: '';
-    displayName: 'slider';
-  };
-  attributes: {
-    filer: Schema.Attribute.Media<'images', true>;
-  };
-}
-
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -98,9 +65,6 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'delt.media': DeltMedia;
-      'delt.rik-tekst': DeltRikTekst;
-      'delt.slider': DeltSlider;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

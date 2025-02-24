@@ -17,10 +17,7 @@
     },
     "blokker": {
       "type": "dynamiczone",
-      "components": [
-        "delt.media",
-        "delt.rik-tekst"
-      ]
+      "components": []
     }
   }
 }

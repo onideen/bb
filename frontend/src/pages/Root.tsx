@@ -7,14 +7,14 @@ const RootNavigation = () => {
   return (
     <>
       <div id="modal"></div>
-      <header>    
+      <header>
         <Navbar />
       </header>
-      <main>
+      <main className="min-h-screen pt-22">
         <Outlet />
       </main>
     </>
   );
-}
+};
 
 export default RootNavigation;
