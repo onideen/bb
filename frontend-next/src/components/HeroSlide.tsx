@@ -1,5 +1,4 @@
 import Link from "next/link";
-import dummyImage from "../assets/hero-image.jpg";
 import { MediaAttributes } from "./MediaRenderer";
 
 export interface HeroSlideProps {
@@ -17,7 +16,7 @@ function HeroSlide({
   linkText,
   linkHref,
 }: HeroSlideProps) {
-  const img = image ? image : dummyImage;
+  const img = image ? image : "/images/hero-image";
   return (
     <div
       className="relative bg-cover bg-center h-full"

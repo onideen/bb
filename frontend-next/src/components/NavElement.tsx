@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import Link from "next/link";
 
 interface NavElementProps {
   title: string,
@@ -9,9 +9,9 @@ interface NavElementProps {
 function NavElement({ title, to }: NavElementProps) {
   return (
     <li className="p-1 font-normal text-gray-800">
-      <NavLink to={to} className="flex items-center">
+      <Link href={to} className="flex items-center">
         {title}
-      </NavLink>
+      </Link>
     </li>
   );
 }
