@@ -12,7 +12,7 @@ export default function Home() {
   const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
-    api.get("/articles/xmca2bmx7i4k2goisrycmm72?populate=*")
+    api.get("/articles?populate=*")
       .then((res) => setArticles(res.data.data))
       .catch((err) => console.error("Error fetching data:", err));
   }, []);

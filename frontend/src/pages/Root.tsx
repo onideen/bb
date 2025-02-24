@@ -7,7 +7,9 @@ const RootNavigation = () => {
   return (
     <>
       <div id="modal"></div>
-      <Navbar />
+      <header>    
+        <Navbar />
+      </header>
       <main>
         <Outlet />
       </main>

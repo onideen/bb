@@ -1,31 +1,24 @@
-import { useEffect, useState } from "react";
-import PageContent from "../components/PageContent";
+//import { useEffect, useState } from "react";
+//import PageContent from "../components/PageContent";
 
-import { api } from "../api";
-import RenderDynamicContent, {
-  DynamicContent,
-} from "../components/DynamicContent";
+//import { ApiPagePage as Page } from "../types/contentTypes";
 
-interface OmOss {
-  tittel: string;
-  blokker: DynamicContent[];
-}
+//import { api } from "../api";
 
 function AboutUs() {
-  const [aboutUs, setAboutUs] = useState<OmOss>();
-  useEffect(() => {
-    api
-      .get("/om-oss?populate[blokker][populate]=*")
-      .then((res) => setAboutUs(res.data.data))
-      .catch((err) => console.error("Error fetching data:", err));
-  }, []);
+
 
   return (
-    <PageContent title={aboutUs?.tittel || "tittel"}>
-      {aboutUs?.blokker?.map((blokk) => {
-        return <RenderDynamicContent key={blokk.id} dynamicContent={blokk} />;
+    /*<PageContent title={page?.attributes.title || "tittel"}>
+      {page?.attributes.blocks?.map((block, index) => {
+        switch (block.__component) {
+          default: 
+            return <p></p>
+        }
+      
       })}
-    </PageContent>
+    </PageContent> */
+    <></>
   );
 }
 
