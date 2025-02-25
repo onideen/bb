@@ -1,10 +1,10 @@
 import "./components/Navbar";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import RootNavigation from "./pages/Root";
 import HomePage from "./pages/Home";
 import GenericPage from "./pages/GenericPage";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <RootNavigation />,
