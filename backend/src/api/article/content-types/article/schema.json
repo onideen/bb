@@ -4,8 +4,8 @@
   "info": {
     "singularName": "article",
     "pluralName": "articles",
-    "displayName": "Article",
-    "description": "Create your blog content"
+    "displayName": "Artikkel",
+    "description": "Skriv innlegg her"
   },
   "options": {
     "draftAndPublish": true
