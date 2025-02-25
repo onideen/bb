@@ -15,7 +15,7 @@ function HomePage() {
 
   return (
     <PageContent title="Hjem">
-      <h1>Strapi + Vite + React</h1>
+      <h1>Velkommen</h1>
       <ul>
         {articles.map((article) => (
           <li key={article.id}>
