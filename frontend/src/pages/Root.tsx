@@ -1,14 +1,7 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { useEffect } from "react";
 
 const RootNavigation = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    window.history.replaceState({}, "", location.pathname);
-  }, [location]);
-
   return (
     <>
       <div id="modal"></div>
