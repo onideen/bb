@@ -1,3 +1,5 @@
+import { getOptimalImage } from "../utils/media-utils";
+
 interface ImgAttributes {
   name?: string;
   hash?: string;
@@ -24,20 +26,6 @@ export interface MediaAttributes {
     large?: ImgAttributes;
   };
 }
-
-const getOptimalImage = (media: MediaAttributes) => {
-  const baseUrl = "http://localhost:1337"; // Bytt til riktig Strapi-server URL
-  const width = window.innerWidth;
-
-  if (width <= 500 && media.formats?.small)
-    return baseUrl + media.formats.small.url;
-  if (width <= 750 && media.formats?.medium)
-    return baseUrl + media.formats.medium.url;
-  if (width > 750 && media.formats?.large)
-    return baseUrl + media.formats.large.url;
-
-  return baseUrl + media.url; // Fallback til originalbildet
-};
 
 const MediaRenderer = ({ file }: { file: MediaAttributes }) => {
   if (!file) return null;

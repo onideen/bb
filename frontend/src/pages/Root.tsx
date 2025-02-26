@@ -8,7 +8,7 @@ const RootNavigation = () => {
       <header>
         <Navbar />
       </header>
-      <main className="min-h-screen pt-22">
+      <main className="min-h-screen pt-2">
         <Outlet />
       </main>
     </>

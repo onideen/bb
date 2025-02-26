@@ -12,9 +12,7 @@ const PageContent = ({ title, children }: PageContentProps) => {
       <section className="relative h-96 max-h-1/2">
         <HeroSlide title={title} />
       </section>
-      <section className="mx-auto max-w-screen-md py-12 px-4">
-        {children}
-      </section>
+      <section className="mx-auto py-12 px-4">{children}</section>
     </>
   );
 };

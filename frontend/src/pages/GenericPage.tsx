@@ -18,7 +18,15 @@ function GenericPage() {
   useEffect(() => {
     if (!slug) return; // Sjekk at slug faktisk finnes
     api
-      .get(`/pages?filters[slug][$eq]=${slug}&populate=*`)
+      .get("/pages", {
+        params: {
+          filters: { slug: { $eq: slug } },
+          populate: {
+            cover: { populate: "*" },
+            blocks: { populate: "*" },
+          },
+        },
+      })
       .then((res) => setPage(res.data.data[0]))
       .catch((err) => console.error("Error fetching data:", err));
   }, [slug]);
