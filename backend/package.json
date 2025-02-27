@@ -17,7 +17,6 @@
     "@strapi/provider-upload-cloudinary": "^5.10.3",
     "@strapi/strapi": "5.9.0",
     "better-sqlite3": "11.3.0",
-    "flowbite-react": "^0.10.2",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
     "pg": "^8.13.3",
