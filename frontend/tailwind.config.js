@@ -13,6 +13,6 @@ module.exports = withMT({
     extend: {},
   },
   plugins: [
-    flowbite.plugins()
+    flowbite.plugin()
   ],
 });
