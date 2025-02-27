@@ -32,7 +32,7 @@ function GenericPage() {
   }, [slug]);
   return (
     <PageContent title={page?.title || "tittel"}>
-      <RenderDynamicContent blocks={page?.blocks} />
+      <RenderDynamicContent blocks={page?.blocks}  />
     </PageContent>
   );
 }

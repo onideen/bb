@@ -13,6 +13,7 @@ module.exports = withMT({
     extend: {},
   },
   plugins: [
-    flowbite.plugin()
+    flowbite.plugin(),
+    "tailwindcss/typography"
   ],
 });
