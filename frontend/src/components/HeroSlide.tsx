@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import dummyImage from "../assets/hero-image.jpg";
 import { MediaAttributes } from "./MediaRenderer";
+import { getOptimalImage } from "../utils/media-utils";
 
 export interface HeroSlideProps {
   image?: MediaAttributes;
@@ -17,7 +18,7 @@ function HeroSlide({
   linkText,
   linkHref,
 }: HeroSlideProps) {
-  const img = image ? image : dummyImage;
+  const img = image ? getOptimalImage(image) : dummyImage;
   return (
     <div
       className="relative bg-cover bg-center h-full"

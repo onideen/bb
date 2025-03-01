@@ -16,7 +16,11 @@ export default function RenderDynamicContent({ blocks }: Props) {
       {blocks.map((block, index) => {
         switch (block.__component) {
           case "shared.rich-text":
-            return <BlocksRenderer content={block.innhold} key={index} />;
+            return (
+              <div className="prose">
+                <BlocksRenderer content={block.innhold} key={index} />
+                </div>
+            );
           case "shared.media":
             return <MediaRenderer file={block.file} key={index} />;
           default:

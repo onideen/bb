@@ -1,7 +1,8 @@
 import { MediaAttributes } from "../components/MediaRenderer";
 
-export const getOptimalImage = (media: MediaAttributes) => {
+export const getOptimalImage = (media?: MediaAttributes) => {
 
+  if (!media) return ""
  
   const baseUrl = import.meta.env.STRAPI_URL || "http://localhost:1337"; // Bytt til riktig Strapi-server URL
   const width = window.innerWidth;

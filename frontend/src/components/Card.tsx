@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import defaultImage from "../assets/hero-image.jpg"
+import MediaRenderer, { MediaAttributes } from "./MediaRenderer";
 
 interface Props {
-    image?: string,
+    image?: MediaAttributes,
     url: string,
     title: string,
     shortText: string
@@ -13,7 +13,7 @@ export default function Card({image, url, title, shortText}: Props){
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
             <Link to={url}>
-                <img className="rounded-t-lg" src={image ?? defaultImage} alt="" />
+                <MediaRenderer file={image} className="rounded-t-lg" />
             </Link>
             <div className="p-5">
                 <Link to={url}>

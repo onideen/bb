@@ -31,9 +31,14 @@ function GenericPage() {
       .catch((err) => console.error("Error fetching data:", err));
   }, [slug]);
   return (
-    <PageContent title={page?.title || "tittel"}>
-      <RenderDynamicContent blocks={page?.blocks}  />
-    </PageContent>
+    <section>
+      <PageContent 
+        title={page?.title || "tittel"}
+        image={page?.cover}
+      >
+        <RenderDynamicContent blocks={page?.blocks}  />
+      </PageContent>
+    </section>
   );
 }
 

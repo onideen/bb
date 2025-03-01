@@ -27,7 +27,7 @@ export interface MediaAttributes {
   };
 }
 
-const MediaRenderer = ({ file }: { file: MediaAttributes }) => {
+const MediaRenderer = ({ file, className }: { file?: MediaAttributes, className?: string }) => {
   if (!file) return null;
 
   const imageSrc = getOptimalImage(file);
@@ -36,9 +36,10 @@ const MediaRenderer = ({ file }: { file: MediaAttributes }) => {
     <img
       src={imageSrc}
       alt={file.alternativeText || "Image"}
-      className="rounded-lg shadow-md w-full mb-4"
+      className={className ?? "rounded-lg shadow-md w-full mb-4"}
     />
   );
 };
 
+      
 export default MediaRenderer;

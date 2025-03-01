@@ -1,9 +1,11 @@
 import { BlocksContent } from "@strapi/blocks-react-renderer";
+import { MediaAttributes } from "../components/MediaRenderer";
 
 export interface Article{
     id: number,
     documentId: string,
     title: string,
+    cover: MediaAttributes
     description: string,
     slug: string,
     createdAt: string,
@@ -19,7 +21,7 @@ export interface Page {
       updatedAt: string,
       publishedAt: string,
       slug: sting
-      cover: null,
+      cover: MediaAttributes,
       blocks: DynamicBlocks[],
       articles: Article[]
 }
