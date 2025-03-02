@@ -8,9 +8,11 @@ export interface Article{
     cover: MediaAttributes
     description: string,
     slug: string,
+    blocks: DynamicBlocks[],
     createdAt: string,
     updatedAt: string,
     publishedAt: string
+
 }
 
 export interface Page {

@@ -13,7 +13,7 @@ export default function Card({image, url, title, shortText}: Props){
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
             <Link to={url}>
-                <MediaRenderer file={image} className="rounded-t-lg" />
+                <MediaRenderer file={image} className="rounded-t-lg w-full object-cover" />
             </Link>
             <div className="p-5">
                 <Link to={url}>
