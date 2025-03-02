@@ -4,7 +4,7 @@ export const getOptimalImage = (media?: MediaAttributes ) => {
 
   if (!media) return ""
  
-  const baseUrl = media.url.startsWith("http") || import.meta.env.STRAPI_URL || "http://localhost:1337"; // Bytt til riktig Strapi-server URL
+  const baseUrl = import.meta.env.STRAPI_URL; // Bytt til riktig Strapi-server URL
 
   const width = window.innerWidth;
 
