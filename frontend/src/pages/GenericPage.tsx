@@ -12,15 +12,15 @@ import { useParams } from "react-router-dom";
 //import { api } from "../api";
 
 function GenericPage() {
-  const { slug } = useParams<{ slug: string }>();
+  const { path } = useParams<{ path: string }>();
   const [page, setPage] = useState<Page>();
 
   useEffect(() => {
-    if (!slug) return; // Sjekk at slug faktisk finnes
+    if (!path) return; // Sjekk at slug faktisk finnes
     api
       .get("/pages", {
         params: {
-          filters: { slug: { $eq: slug } },
+          filters: { path: { $eq: "/" + path } },
           populate: {
             cover: { populate: "*" },
             blocks: { populate: "*" },
@@ -29,7 +29,7 @@ function GenericPage() {
       })
       .then((res) => setPage(res.data.data[0]))
       .catch((err) => console.error("Error fetching data:", err));
-  }, [slug]);
+  }, [path]);
   return (
     <section>
       <PageContent 

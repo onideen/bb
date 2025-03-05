@@ -13,7 +13,16 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "external": {
+      "type": "boolean",
+      "default": false
+    },
+    "path": {
+      "type": "string",
+      "required": true
     },
     "cover": {
       "type": "media",
@@ -41,8 +50,14 @@
     },
     "slug": {
       "type": "string",
-      "unique": true,
-      "required": true
+      "unique": false,
+      "required": false
+    },
+    "navbar": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::navbar.navbar",
+      "inversedBy": "pages"
     }
   }
 }

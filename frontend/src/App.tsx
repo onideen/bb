@@ -12,7 +12,7 @@ const router = createHashRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "/article/:id", element: <ArticlePage />},
-      { path: "/:slug", element: <GenericPage /> },
+      { path: "/:path", element: <GenericPage /> },
     ],
   },
 ]);

@@ -1,11 +1,44 @@
 import NavElement from "./NavElement";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { api } from "../api";
+
+interface Page {
+  id: number;
+  title: string;
+  path: string;
+}
+
+interface Navbar {
+  id: number;
+  title: string;
+  order: number;
+  pages: Page[];
+
+}
+
 
 export default function Navbar() {
 
+  const [menu, setMenu] = useState<Navbar | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    api
+      .get(`/navbars`, {
+        params: {
+          filter: {
+            name: { $eq: "Hovedmeny" }
+          },
+          populate: {
+            pages: { fields: ["title", "path"]}
+          }
+        },
+      })
+      .then((res) => setMenu(res.data.data[0]))
+      .catch((err) => console.error("Error fetching data:", err));
+    }, []);
 
   return (
     <nav className="bg-white dark:bg-gray-900 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
@@ -47,11 +80,9 @@ export default function Navbar() {
           id="navbar-default"
         >
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <NavElement title="Om Oss" to="/om-oss" />
-            <NavElement title="Kurs" to="/kurs" />
-            <NavElement title="Svermfangere" to="/svermfangere" />
-            <NavElement title="Kontakt" to="/kontakt" />
-            <NavElement title="Bli Medlem" to="/bli-medlem" />
+            {menu?.pages.map((item) => {
+              return <NavElement key={item.id} title={item.title} to={item.path} />
+            })}
           </ul>
         </div>
       </div>
