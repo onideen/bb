@@ -1,8 +1,12 @@
 import NavElement from "./NavElement";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpg";
+import { useState } from "react";
 
 export default function Navbar() {
+
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <nav className="bg-white dark:bg-gray-900 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -16,11 +20,10 @@ export default function Navbar() {
           </span>
         </NavLink>
         <button
-          data-collapse-toggle="navbar-default"
-          type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden p-2 w-10 h-10 text-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="navbar-default"
-          aria-expanded="false"
+          aria-expanded={isOpen}
         >
           <span className="sr-only">Åpne menyen</span>
           <svg
@@ -40,7 +43,7 @@ export default function Navbar() {
           </svg>
         </button>
         <div
-          className="justify-between hidden w-full lg:flex lg:w-auto"
+          className={`${isOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
           id="navbar-default"
         >
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
