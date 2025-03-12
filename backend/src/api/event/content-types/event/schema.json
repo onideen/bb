@@ -1,0 +1,92 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "short_title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 40
+    },
+    "start_time": {
+      "type": "datetime",
+      "required": false
+    },
+    "end_time": {
+      "type": "datetime"
+    },
+    "location": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::location.location",
+      "inversedBy": "events"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "kurs",
+        "møte",
+        "dugnad",
+        "lagsbigård"
+      ]
+    },
+    "requires_registration": {
+      "type": "boolean"
+    },
+    "registration_link": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "event_state": {
+      "type": "enumeration",
+      "enum": [
+        "planlagt",
+        "publisert",
+        "avlyst",
+        "gjennomført"
+      ]
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.slider",
+        "shared.rich-text",
+        "shared.media"
+      ]
+    },
+    "people": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.contact-entry"
+    },
+    "event_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::event-category.event-category",
+      "mappedBy": "events"
+    }
+  }
+}

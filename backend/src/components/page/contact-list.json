@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_page_contact_lists",
+  "info": {
+    "displayName": "contact_list",
+    "icon": "envelop"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "contacts": {
+      "displayName": "contact_entry",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.contact-entry"
+    }
+  }
+}

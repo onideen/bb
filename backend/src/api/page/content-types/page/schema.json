@@ -58,6 +58,14 @@
       "relation": "manyToOne",
       "target": "api::navbar.navbar",
       "inversedBy": "pages"
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "page.event-list",
+        "page.article-list",
+        "page.contact-list"
+      ]
     }
   }
 }

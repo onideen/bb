@@ -59,6 +59,12 @@
       "relation": "manyToMany",
       "target": "api::page.page",
       "mappedBy": "articles"
+    },
+    "article_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article-category.article-category",
+      "mappedBy": "articles"
     }
   }
 }

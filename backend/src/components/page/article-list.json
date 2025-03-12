@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_page_article_lists",
+  "info": {
+    "displayName": "article_list",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "filter_type": {
+      "type": "enumeration",
+      "enum": [
+        "siste",
+        "kategori"
+      ]
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article-category.article-category"
+    },
+    "limit": {
+      "type": "integer"
+    }
+  }
+}

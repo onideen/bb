@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_page_event_lists",
+  "info": {
+    "displayName": "event_list",
+    "icon": "calendar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "filter_type": {
+      "type": "enumeration",
+      "enum": [
+        "kommende",
+        "kategori"
+      ]
+    },
+    "event_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event-category.event-category"
+    },
+    "limit": {
+      "type": "integer"
+    }
+  }
+}

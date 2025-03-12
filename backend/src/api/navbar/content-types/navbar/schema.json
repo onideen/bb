@@ -19,8 +19,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::page.page",
-      "mappedBy": "navbar",
-      "sortable": true
+      "mappedBy": "navbar"
     },
     "order": {
       "type": "integer",

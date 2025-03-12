@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_contact_entries",
+  "info": {
+    "displayName": "contact_entry",
+    "icon": "envelop",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "person": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::person.person"
+    },
+    "role": {
+      "type": "string"
+    }
+  }
+}
