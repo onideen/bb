@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { api } from "../api";
-import { Article } from "../types/content-types";
 import PageContent from "../components/PageContent";
-import Card from "../components/Card";
+import ArticleList from "../components/ArticleList";
+import { Article } from "../types/api";
 
 
 function HomePage() {
@@ -17,19 +17,7 @@ function HomePage() {
 
   return (
     <PageContent title="Hjem">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {articles.map((article) => (
-
-            <Card 
-              key={article.id} 
-              title={article.title} 
-              shortText={article.description} 
-              url={"/article/" + article.documentId}
-              image={article.cover} 
-            />
-          
-        ))}
-      </div>
+      <ArticleList title="Siste nyheter" articles={articles}/>    
     </PageContent>
   );
 }

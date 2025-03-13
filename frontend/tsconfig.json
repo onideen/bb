@@ -5,6 +5,10 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@strapi-types/*": ["../backend/src/types/*"]
+    },
     "allowJs": true,  // Tillater JavaScript-filer
     "checkJs": false  // Setter til true hvis du vil ha feilmeldinger i JS-filer
   }

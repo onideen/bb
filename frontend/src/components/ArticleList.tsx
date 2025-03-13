@@ -32,3 +32,5 @@ const ArticleList = ({ title, articles }: ArticleListProps) => {
         </>
     )
 }
+
+export default ArticleList

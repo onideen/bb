@@ -17,11 +17,11 @@ export default function Card({image, url, title, shortText}: Props){
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
             <Link to={url}>
-                {(isLoading || hasError) && (
+                {/*( !image || isLoading || hasError) && ( //Todo: legges inn i MediaRenderer i steden?
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-300">
                         <span className="text-gray-500">Laster bilde...</span>
                     </div>                   
-                )}
+                )*/}
                 <MediaRenderer 
                     file={image} 
                     className={`rounded-t-lg w-full h-48 object-cover transition-opacity duration-300 ${
