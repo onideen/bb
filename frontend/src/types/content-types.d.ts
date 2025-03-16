@@ -25,7 +25,8 @@ export interface Page {
       slug: sting
       cover: MediaAttributes,
       blocks: DynamicBlocks[],
-      articles: Article[]
+      articles: Article[],
+      sections: DynamicBlocks[]
 }
 
 export interface DynamicBlock {
@@ -41,8 +42,14 @@ export interface RichTextBlock extends DynamicBlock {
 export interface MediaBlock extends DynamicBlock {
     __component: "shared.media";
     file: MediaAttributes;
-  }
+}
+
+export interface ArticleList extends DynamicBlock {
+    __component: "page.article-list",
+    filter_type: string,
+    limit: number
+}
   
-  export type DynamicBlocks = RichTextBlock | MediaBlock
+export type DynamicBlocks = RichTextBlock | MediaBlock | ArticleList
 
   
