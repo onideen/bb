@@ -1,10 +1,9 @@
 import PageContent from "../components/PageContent";
-import axios, { AxiosResponse } from "axios";
 import { useCallback, useEffect, useState } from "react";
-import { api } from "../api";
+import { fetchArticlesForSections, fetchPageData } from "../utils/api";
 import SectionRenderer from "../components/SectionRenderer";
 import { useParams } from "react-router-dom";
-import { Article, Page, Section } from "../types/content-types";
+import { Article, Page } from "../types/content-types";
 
 const GenericPage = () => {
   
@@ -16,98 +15,46 @@ const GenericPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   // Henter seksjonskonfigurasjon (første API-kall)
-  const fetchPage = useCallback(async () => {
+  const loadPageData = useCallback(async () => {
     if (!path) return; // Sjekk at slug faktisk finnes
     try {
-      setLoading(true);
-      const res = await api.get("/pages", {
-        params: {
-          filters: { path: { $eq: "/" + path } },
-          populate: {
-            cover: { populate: "*" },
-            blocks: { populate: "*" },
-            sections: { populate: "*"}
-          },
-        },
-      });
-        const page = res.data.data[0]
-        console.log(page)
+        const page = await fetchPageData(path);
         setPageData(page)
         
-    } catch (err: unknown) { // TypeScript krever "unknown" hvis vi ikke vet typen
-      if (axios.isAxiosError(err)) {
-        console.error("her")
-        setError(err.response?.data?.message || err.message);
-      } else {
-        
-        console.error("her")
-
-        setError("Ukjent feil oppstod");
-      }
+    } catch (err: unknown) { 
+      setError((err as Error).message);
     } finally {
       setLoading(false);
     }    
   }, [path]);
 
   // Henter artikler for hver seksjon (andre API-kall)
-  const fetchArticlesForSections = useCallback(async () => {
-    
-    const sections: Section[] | undefined = pageData?.sections;    
-    if (!sections || sections.length === 0) return;
+  const loadArticlesForSections = useCallback(async () => {
+    if (!pageData?.sections || pageData.sections.length === 0) return;
+    setLoading(true);
     try {
-      setLoading(true);
-
-      const requests: Promise<AxiosResponse<{ data: Article[] }>>[]  = sections
-          .filter(section => section.__component === "page.article-list")
-          .map(() =>
-
-          // Todo legge til filter her
-          api.get("/articles", {
-            params: {
-              populate: {
-                cover: { populate: "*" },
-                blocks: { populate: "*" },
-              },
-            },
-          })
-      );
-      
-      const responses = await axios.all(requests);
-
-      const newArticles = responses.reduce<Record<number, Article[]>>((acc, response, index) => {
-        const sectionId = sections[index]?.id; // 🎯 Sikrer at sectionId er definert
-        if (sectionId) {
-          acc[sectionId] = response.data.data;
-        }
-        return acc;
-
-      }, {} as Record<number, Article[]>);
-
-      setArticles(newArticles);
-    } catch (err) {
-      if (axios.isAxiosError(err)) {
-        setError(err.response?.data?.message || err.message);
-      } else if (err instanceof Error) {
-        setError(err.message); 
-      } else {
-        setError("Ukjent feil oppstod.");
-      }
+      const articlesData = await fetchArticlesForSections(pageData.sections);
+      console.log("Artikler hentet fra API:", articlesData);
+      setArticles(articlesData);
+    } catch (err: unknown) {
+      setError((err as Error).message);
     } finally {
       setLoading(false);
     }
-  }, [pageData?.sections]);
+  }, [pageData]);
+
 
   // Hent seksjoner ved første render
   useEffect(() => {
-    fetchPage();
-  }, [fetchPage]);
+    loadPageData();
+  }, [loadPageData]);
 
   // Hent artikler når seksjonsdata er lastet
   useEffect(() => {
-    if (pageData?.sections && pageData.sections.length > 0) {
-            fetchArticlesForSections();
-    }
-  }, [pageData?.sections, fetchArticlesForSections]);
+    
+    loadArticlesForSections()
+  
+  }, [loadArticlesForSections]);
 
   if (loading) return <p>Laster...</p>;
   if (error) return <p>Feil: {error}</p>;

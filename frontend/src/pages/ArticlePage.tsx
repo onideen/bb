@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { api } from "../api";
+import { api } from "../utils/api";
 import { Article } from "../types/content-types";
 import PageContent from "../components/PageContent";
 import SectionRenderer from "../components/SectionRenderer";

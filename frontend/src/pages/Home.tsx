@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { api } from "../api";
+import { api } from "../utils/api";
 import PageContent from "../components/PageContent";
 import ArticleList from "../components/ArticleList";
-import { Article } from "../types/api";
+import { Article } from "../types/content-types";
+
 
 
 function HomePage() {

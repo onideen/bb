@@ -2,7 +2,7 @@
 import PageContent from "../components/PageContent";
 
 import { useEffect, useState } from "react";
-import { api } from "../api";
+import { api } from "../utils/api";
 import { Page } from "../types/content-types";
 import SectionRenderer from "../components/SectionRenderer";
 

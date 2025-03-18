@@ -2,7 +2,7 @@ import NavElement from "./NavElement";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import { useEffect, useState } from "react";
-import { api } from "../api";
+import { api } from "../utils/api";
 
 interface Page {
   id: number;
