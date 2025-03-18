@@ -3,6 +3,7 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface PageArticleList extends Struct.ComponentSchema {
   collectionName: 'components_page_article_lists';
   info: {
+    description: '';
     displayName: 'article_list';
     icon: 'book';
   };
@@ -13,6 +14,7 @@ export interface PageArticleList extends Struct.ComponentSchema {
     >;
     filter_type: Schema.Attribute.Enumeration<['siste', 'kategori']>;
     limit: Schema.Attribute.Integer;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -43,6 +45,7 @@ export interface PageEventList extends Struct.ComponentSchema {
     >;
     filter_type: Schema.Attribute.Enumeration<['kommende', 'kategori']>;
     limit: Schema.Attribute.Integer;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 

@@ -4,7 +4,7 @@ import PageContent from "../components/PageContent";
 import { useEffect, useState } from "react";
 import { api } from "../api";
 import { Page } from "../types/content-types";
-import RenderDynamicContent from "../components/DynamicBlockRenderer";
+import SectionRenderer from "../components/SectionRenderer";
 
 //import { ApiPagePage as Page } from "../types/contentTypes";
 
@@ -21,7 +21,7 @@ function AboutUs() {
   }, []);
   return (
     <PageContent title={page?.title || "tittel"}>
-      <RenderDynamicContent blocks={page?.blocks} />
+      <SectionRenderer sections={page?.blocks} />
     </PageContent>
   );
 }

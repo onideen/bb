@@ -8,7 +8,7 @@ export interface Article{
     cover: MediaAttributes
     description: string,
     slug: string,
-    blocks: DynamicBlocks[],
+    blocks: Section[],
     createdAt: string,
     updatedAt: string,
     publishedAt: string
@@ -24,9 +24,9 @@ export interface Page {
       publishedAt: string,
       slug: sting
       cover: MediaAttributes,
-      blocks: DynamicBlocks[],
+      blocks: Section[],
       articles: Article[],
-      sections: DynamicBlocks[]
+      sections: Section[]
 }
 
 export interface DynamicBlock {
@@ -46,10 +46,11 @@ export interface MediaBlock extends DynamicBlock {
 
 export interface ArticleList extends DynamicBlock {
     __component: "page.article-list",
+    title: string,
     filter_type: string,
     limit: number
 }
   
-export type DynamicBlocks = RichTextBlock | MediaBlock | ArticleList
+export type Section = RichTextBlock | MediaBlock | ArticleList
 
   

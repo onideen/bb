@@ -1,26 +1,19 @@
-//import { useEffect, useState } from "react";
 import PageContent from "../components/PageContent";
 import axios, { AxiosResponse } from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { api } from "../api";
-import RenderDynamicContent from "../components/DynamicBlockRenderer";
+import SectionRenderer from "../components/SectionRenderer";
 import { useParams } from "react-router-dom";
-import { DynamicBlock, Page } from "../types/content-types";
-//import { Page } from "../types/api";
-
-//import { ApiPagePage as Page } from "../types/contentTypes";
-
-//import { api } from "../api";
+import { Article, Page, Section } from "../types/content-types";
 
 const GenericPage = () => {
   
   const { path } = useParams<{ path: string }>();
 
-  const [pageData, setPageData] = useState<Page>();
-
-  const [articles, setArticles] = useState({}); // Artikler per seksjon
+  const [pageData, setPageData] = useState<Page | null>(null);
+  const [articles, setArticles] = useState<Record<number, Article[]>>({});  
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   // Henter seksjonskonfigurasjon (første API-kall)
   const fetchPage = useCallback(async () => {
@@ -58,12 +51,13 @@ const GenericPage = () => {
 
   // Henter artikler for hver seksjon (andre API-kall)
   const fetchArticlesForSections = useCallback(async () => {
-    if (pageData?.sections?.length === 0) return;
-
+    
+    const sections: Section[] | undefined = pageData?.sections;    
+    if (!sections || sections.length === 0) return;
     try {
       setLoading(true);
 
-      const requests: Promise<AxiosResponse<unknown>>[]  = pageData?.sections
+      const requests: Promise<AxiosResponse<{ data: Article[] }>>[]  = sections
           .filter(section => section.__component === "page.article-list")
           .map(() =>
 
@@ -80,15 +74,24 @@ const GenericPage = () => {
       
       const responses = await axios.all(requests);
 
-      const newArticles = responses.reduce<Record<number, any[]>>((acc, response, index) => {
-        acc[pageData?.sections[index].id] = response.data.data;
+      const newArticles = responses.reduce<Record<number, Article[]>>((acc, response, index) => {
+        const sectionId = sections[index]?.id; // 🎯 Sikrer at sectionId er definert
+        if (sectionId) {
+          acc[sectionId] = response.data.data;
+        }
         return acc;
 
-      }, {} as Record<number, any[]>);
+      }, {} as Record<number, Article[]>);
 
       setArticles(newArticles);
     } catch (err) {
-      setError(err.message);
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.message || err.message);
+      } else if (err instanceof Error) {
+        setError(err.message); 
+      } else {
+        setError("Ukjent feil oppstod.");
+      }
     } finally {
       setLoading(false);
     }
@@ -118,7 +121,7 @@ console.log(articles)
         title={pageData?.title || "tittel"}
         image={pageData?.cover}
       >
-        <RenderDynamicContent blocks={pageData?.sections} sectionContent={articles} />
+        <SectionRenderer sections={pageData?.sections} sectionContent={articles} />
       </PageContent>
     </section>
   );

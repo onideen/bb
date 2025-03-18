@@ -21,6 +21,10 @@
     },
     "limit": {
       "type": "integer"
+    },
+    "title": {
+      "type": "string",
+      "required": true
     }
   }
 }

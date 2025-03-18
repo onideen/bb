@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api";
 import { Article } from "../types/content-types";
 import PageContent from "../components/PageContent";
-import RenderDynamicContent from "../components/DynamicBlockRenderer";
+import SectionRenderer from "../components/SectionRenderer";
 import { useParams } from "react-router-dom";
 
 
@@ -31,7 +31,7 @@ function ArticlePage() {
         title={article?.title || "tittel"}
         image={article?.cover}
       >
-        <RenderDynamicContent blocks={article?.blocks}  />
+        <SectionRenderer sections={article?.blocks}  />
       </PageContent>
     </section>
   );
