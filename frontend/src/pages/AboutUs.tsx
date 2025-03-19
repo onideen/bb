@@ -6,10 +6,6 @@ import { api } from "../utils/api";
 import { Page } from "../types/content-types";
 import SectionRenderer from "../components/SectionRenderer";
 
-//import { ApiPagePage as Page } from "../types/contentTypes";
-
-//import { api } from "../api";
-
 function AboutUs() {
   const [page, setPage] = useState<Page>();
 

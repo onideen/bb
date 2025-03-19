@@ -12,7 +12,7 @@ interface Props {
 export default function Card({image, url, title, shortText}: Props){
 
     const [isLoading, setIsLoading] = useState(true);
-    const [hasError, setHasError] = useState(false);
+//    const [hasError, setHasError] = useState(false);
 
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
@@ -31,7 +31,7 @@ export default function Card({image, url, title, shortText}: Props){
                     onLoad={() => setIsLoading(false)}
                     onError={() => {
                         setIsLoading(false);
-                        setHasError(true);
+//                        setHasError(true);
                     }}
 
                     />
