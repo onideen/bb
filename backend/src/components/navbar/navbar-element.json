@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_navbar_navbar_elements",
+  "info": {
+    "displayName": "navbar_element",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "tittel": {
+      "type": "string"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    }
+  }
+}

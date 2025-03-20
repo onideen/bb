@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface NavbarNavbarElement extends Struct.ComponentSchema {
+  collectionName: 'components_navbar_navbar_elements';
+  info: {
+    description: '';
+    displayName: 'navbar_element';
+  };
+  attributes: {
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
+    tittel: Schema.Attribute.String;
+  };
+}
+
 export interface PageArticleList extends Struct.ComponentSchema {
   collectionName: 'components_page_article_lists';
   info: {
@@ -127,6 +139,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'navbar.navbar-element': NavbarNavbarElement;
       'page.article-list': PageArticleList;
       'page.contact-list': PageContactList;
       'page.event-list': PageEventList;

@@ -42,12 +42,6 @@
         "shared.media"
       ]
     },
-    "articles": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::article.article",
-      "inversedBy": "pages"
-    },
     "slug": {
       "type": "string",
       "unique": false,

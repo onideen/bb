@@ -39,12 +39,6 @@
       "target": "api::author.author",
       "inversedBy": "articles"
     },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "articles"
-    },
     "blocks": {
       "type": "dynamiczone",
       "components": [
@@ -53,12 +47,6 @@
         "shared.rich-text",
         "shared.slider"
       ]
-    },
-    "pages": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::page.page",
-      "mappedBy": "articles"
     },
     "article_categories": {
       "type": "relation",
