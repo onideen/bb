@@ -33,15 +33,6 @@
         "videos"
       ]
     },
-    "blocks": {
-      "type": "dynamiczone",
-      "components": [
-        "shared.slider",
-        "shared.rich-text",
-        "shared.quote",
-        "shared.media"
-      ]
-    },
     "slug": {
       "type": "string",
       "unique": false,
