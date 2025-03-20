@@ -14,11 +14,12 @@ const GenericPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const resolvedPath = path || "home"; 
+
   // Henter seksjonskonfigurasjon (første API-kall)
   const loadPageData = useCallback(async () => {
-    if (!path) return; // Sjekk at slug faktisk finnes
     try {
-        const page = await fetchPageData(path);
+        const page = await fetchPageData(resolvedPath);
         setPageData(page)
         
     } catch (err: unknown) { 
@@ -26,7 +27,7 @@ const GenericPage = () => {
     } finally {
       setLoading(false);
     }    
-  }, [path]);
+  }, [resolvedPath]);
 
   // Henter artikler for hver seksjon (andre API-kall)
   const loadArticlesForSections = useCallback(async () => {
