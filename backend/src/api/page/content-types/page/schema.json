@@ -58,7 +58,9 @@
       "components": [
         "page.event-list",
         "page.article-list",
-        "page.contact-list"
+        "page.contact-list",
+        "shared.rich-text",
+        "shared.media"
       ]
     }
   }

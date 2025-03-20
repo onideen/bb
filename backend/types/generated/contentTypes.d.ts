@@ -696,7 +696,13 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     path: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
-      ['page.event-list', 'page.article-list', 'page.contact-list']
+      [
+        'page.event-list',
+        'page.article-list',
+        'page.contact-list',
+        'shared.rich-text',
+        'shared.media',
+      ]
     >;
     slug: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
