@@ -2,10 +2,11 @@ import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import MediaRenderer from "./MediaRenderer";
 import { Article, Section } from "../types/content-types";
 import ArticleList from "./ArticleList";
+import {  isFetchableSection } from "../utils/typeGuards";
 
 interface Props {
   sections?: Section[];
-  sectionContent?: Record<number, Article[]>
+  sectionContent?: Record<number, unknown[]>
 }
 
 export default function SectionRenderer({ sections: sections, sectionContent }: Props) {
@@ -16,7 +17,23 @@ export default function SectionRenderer({ sections: sections, sectionContent }: 
   return (
     <div>
       {sections.map((section, index) => {
-        switch (section.__component) {
+        if (isFetchableSection(section)) {
+          const data = sectionContent?.[section.id] ?? []
+          switch (section.__component) {
+            case "page.article-list":
+              return <ArticleList title="Artikler" articles={data as Article[]} key={index} />;
+            case "page.event-list":
+              return (
+                <div key={index}>
+                  <h2 className="text-2xl font-bold text-gray-800">
+                  </h2>
+                </div>
+              );
+          }
+        }
+
+          switch (section.__component) {
+  
           case "shared.rich-text":
             return (
               <div className="prose" key={index}>
@@ -25,8 +42,7 @@ export default function SectionRenderer({ sections: sections, sectionContent }: 
             );
           case "shared.media":
             return <MediaRenderer file={section.file} key={index} />;
-          case "page.article-list":
-            return <ArticleList title={section.title} articles={sectionContent?.[section.id] || []} key={index}/>
+         
           default:
             return <div key={index}>Ukjent type</div>;
         }

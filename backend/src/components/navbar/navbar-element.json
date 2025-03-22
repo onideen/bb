@@ -6,13 +6,15 @@
   },
   "options": {},
   "attributes": {
-    "tittel": {
-      "type": "string"
+    "title": {
+      "type": "string",
+      "required": true
     },
     "page": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::page.page"
+      "target": "api::page.page",
+      "required": true
     }
   }
 }

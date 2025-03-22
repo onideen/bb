@@ -34,6 +34,27 @@ export interface DynamicBlock {
     id: number
 }
 
+export interface FetchableSection<T> extends DynamicBlock {
+    apiType: string;
+    dataType: T[];
+    category?: string;
+    filter_type?: "upcoming" | "past";
+    limit?: number;
+  }
+
+
+export interface ArticleList extends FetchableSection<Article> {
+    __component: "page.article-list";
+    apiType: "articles";
+    title: string;
+}
+
+export interface EventList extends FetchableSection<Event> {
+    __component: "page.event-list";
+    apiType: "events";
+    title: string;
+}
+
 export interface RichTextBlock extends DynamicBlock {
     __component: "shared.rich-text";
     innhold: BlocksContent
@@ -44,13 +65,8 @@ export interface MediaBlock extends DynamicBlock {
     file: MediaAttributes;
 }
 
-export interface ArticleList extends DynamicBlock {
-    __component: "page.article-list",
-    title: string,
-    filter_type: string,
-    limit: number
-}
   
-export type Section = RichTextBlock | MediaBlock | ArticleList
+export type FetchableSections = ArticleList | EventList;
+export type StaticSections = RichTextBlock | MediaBlock;
 
-  
+export type Section = FetchableSections | StaticSections;

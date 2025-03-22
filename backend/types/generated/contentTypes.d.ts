@@ -605,7 +605,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
 export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
   collectionName: 'locations';
   info: {
-    displayName: 'location';
+    displayName: '\u00D8ocation';
     pluralName: 'locations';
     singularName: 'location';
   };
@@ -646,7 +646,7 @@ export interface ApiNavbarNavbar extends Struct.CollectionTypeSchema {
     singularName: 'navbar';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;

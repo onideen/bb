@@ -7,8 +7,9 @@ export interface NavbarNavbarElement extends Struct.ComponentSchema {
     displayName: 'navbar_element';
   };
   attributes: {
-    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
-    tittel: Schema.Attribute.String;
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 

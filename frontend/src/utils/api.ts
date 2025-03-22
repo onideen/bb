@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
-import { Article, Page } from "../types/content-types";
+import { FetchableSection, Page } from "../types/content-types";
+import { componentToApiType } from "./sectionApiMap";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:1337/api";
 
 export const api = axios.create({
@@ -20,7 +21,6 @@ export const fetchPageData = async (path: string): Promise<Page | null> => {
         filters: { path: { $eq: "/" + path } },
         populate: {
           cover: { populate: "*" },
-          blocks: { populate: "*" },
           sections: { populate: "*" },
         },
       },
@@ -39,32 +39,51 @@ export const fetchPageData = async (path: string): Promise<Page | null> => {
 /**
  * Henter artikler for alle seksjoner av type "page.article-list".
  */
-export const fetchArticlesForSections = async (sections: { id: number; category?: string }[]): Promise<Record<number, Article[]>> => {
+export const fetchItemsForSections = async <T>(
+  sections: FetchableSection<unknown>[]
+): Promise<Record<number, T[]>> => {
   if (!sections || sections.length === 0) return {};
-
+  console.log(sections)
   try {
-    const requests: Promise<AxiosResponse<{ data: Article[] }>>[] = sections
-      //.filter(section => section.category) // Filtrerer bort seksjoner uten kategori
-      .map(section =>
-        api.get<{ data: Article[] }>("/articles", {
-          params: {
-            filters: {
-              category: { $eq: section.category },
-            },
-            populate: {
-              cover: { populate: "*" },
-              blocks: { populate: "*" },
-            },
-          },
-        })
-      );
+    const requests = sections.map(section => {
+      const params: {
+        filters: {
+          category?: { $eq: string };
+          eventDate?: { $gte?: string; $lt?: string };
+        };
+        sort: string[];
+        pagination: { limit: number };
+        populate: { cover: { populate: string } };
+      } = {
+        filters: {},
+        sort: ["publishedAt:desc"],
+        pagination: { limit: section.limit ?? 5 },
+        populate: { cover: { populate: "*" } },
+      };
+
+      if (section.category) {
+        params.filters.category = { $eq: section.category };
+      }
+
+      if (section.apiType === "events") {
+        if (section.filter_type === "upcoming") {
+          params.filters.eventDate = { $gte: new Date().toISOString() };
+        } else if (section.filter_type === "past") {
+          params.filters.eventDate = { $lt: new Date().toISOString() };
+        }
+      }
+
+      
+      const apiType = componentToApiType[section.__component];
+      return api.get<{ data: T[] }>(`/${apiType}`, { params });
+    });
 
     const responses = await axios.all(requests);
 
-    return responses.reduce<Record<number, Article[]>>((acc, response, index) => {
+    return responses.reduce((acc, response, index) => {
       acc[sections[index].id] = response.data.data;
       return acc;
-    }, {});
+    }, {} as Record<number, T[]>);
   } catch (err: unknown) {
     if (axios.isAxiosError(err)) {
       throw new Error(err.response?.data?.message || err.message);

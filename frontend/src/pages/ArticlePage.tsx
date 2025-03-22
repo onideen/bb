@@ -17,7 +17,6 @@ function ArticlePage() {
           params: {
             populate: {
               cover: { populate: "*" },
-              blocks: { populate: "*" },
             },
           },
         })
