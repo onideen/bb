@@ -28,34 +28,35 @@ export default function Card({
 
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-      <Link to={url}>
-        {/*( !image || isLoading || hasError) && ( //Todo: legges inn i MediaRenderer i steden?
+      {image && (
+        <Link to={url}>
+          <MediaRenderer
+            file={image}
+            className={`w-full h-48 object-cover transition-opacity duration-300 ${
+              isLoading ? "opacity-0" : "opacity-100"
+            }`}
+            onLoad={() => setIsLoading(false)}
+            onError={() => {
+              setIsLoading(false);
+              //                        setHasError(true);
+            }}
+          />
+        </Link>
+      )}
+      {/*( !image || isLoading || hasError) && ( //Todo: legges inn i MediaRenderer i steden?
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-300">
                         <span className="text-gray-500">Laster bilde...</span>
                     </div>                   
                 )*/}
-        <MediaRenderer
-          file={image}
-          className={`rounded-t-lg w-full h-48 object-cover transition-opacity duration-300 ${
-            isLoading ? "opacity-0" : "opacity-100"
-          }`}
-          onLoad={() => setIsLoading(false)}
-          onError={() => {
-            setIsLoading(false);
-            //                        setHasError(true);
-          }}
-        />
-      </Link>
-      <div className="p-5">
+
+      <div className="flex flex-col flex-grow p-5 justify-between">
         <Link to={url}>
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {title}
           </h5>
         </Link>
 
-        {when && (
-          <p className="text-sm text-gray-500 mb-1">📅 {formatDate(when)}</p>
-        )}
+        {when && <p className="text-sm text-gray-500">📅 {formatDate(when)}</p>}
         {where && <p className="text-sm text-gray-500 mb-2">📍 {where.name}</p>}
 
         {tags && tags.length > 0 && (
