@@ -486,6 +486,7 @@ export interface ApiEventCategoryEventCategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'event_categories';
   info: {
+    description: '';
     displayName: 'event_category';
     pluralName: 'event-categories';
     singularName: 'event-category';
@@ -510,9 +511,6 @@ export interface ApiEventCategoryEventCategory
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -537,6 +535,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     content: Schema.Attribute.DynamicZone<
       ['shared.slider', 'shared.rich-text', 'shared.media']
     >;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -548,7 +547,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     event_state: Schema.Attribute.Enumeration<
       ['planlagt', 'publisert', 'avlyst', 'gjennomf\u00F8rt']
     >;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;

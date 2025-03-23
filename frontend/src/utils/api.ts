@@ -10,7 +10,6 @@ export const api = axios.create({
   },
 });
 
-
 /**
  * Henter en side basert på path.
  */
@@ -35,7 +34,6 @@ export const fetchPageData = async (path: string): Promise<Page | null> => {
   }
 };
 
-
 /**
  * Henter artikler for alle seksjoner av type "page.article-list".
  */
@@ -43,9 +41,9 @@ export const fetchItemsForSections = async <T>(
   sections: FetchableSection<unknown>[]
 ): Promise<Record<number, T[]>> => {
   if (!sections || sections.length === 0) return {};
-  console.log(sections)
+  console.log(sections);
   try {
-    const requests = sections.map(section => {
+    const requests = sections.map((section) => {
       const params: {
         filters: {
           category?: { $eq: string };
@@ -53,7 +51,10 @@ export const fetchItemsForSections = async <T>(
         };
         sort: string[];
         pagination: { limit: number };
-        populate: { cover: { populate: string } };
+        populate: {
+          cover: { populate: string };
+          location?: { populate: string };
+        };
       } = {
         filters: {},
         sort: ["publishedAt:desc"],
@@ -65,7 +66,9 @@ export const fetchItemsForSections = async <T>(
         params.filters.category = { $eq: section.category };
       }
 
-      if (section.apiType === "events") {
+      const apiType = componentToApiType[section.__component];
+      if (apiType === "events") {
+        params.populate.location = { populate: "*" };
         if (section.filter_type === "upcoming") {
           params.filters.eventDate = { $gte: new Date().toISOString() };
         } else if (section.filter_type === "past") {
@@ -73,8 +76,6 @@ export const fetchItemsForSections = async <T>(
         }
       }
 
-      
-      const apiType = componentToApiType[section.__component];
       return api.get<{ data: T[] }>(`/${apiType}`, { params });
     });
 

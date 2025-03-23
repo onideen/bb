@@ -4,7 +4,8 @@
   "info": {
     "singularName": "event-category",
     "pluralName": "event-categories",
-    "displayName": "event_category"
+    "displayName": "event_category",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,21 +16,17 @@
       "type": "string",
       "required": true
     },
-    "slug": {
-      "type": "string",
-      "unique": true,
-      "required": true
-    },
     "description": {
       "type": "blocks"
     },
     "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "files",
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "color": {
       "type": "string"
