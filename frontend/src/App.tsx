@@ -9,14 +9,13 @@ const router = createHashRouter([
     path: "/",
     element: <RootNavigation />,
     children: [
-      { path: "/article/:id", element: <ArticlePage />},
+      { path: "/artikler/:id", element: <ArticlePage /> },
       { path: "/:path?", element: <GenericPage /> },
     ],
   },
 ]);
 
 function App() {
-
   return <RouterProvider router={router} />;
 }
 
