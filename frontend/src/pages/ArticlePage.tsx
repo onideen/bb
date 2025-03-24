@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { api } from "../utils/api";
 import { Article } from "../types/content-types";
-import PageContent from "../components/PageContent";
 import SectionRenderer from "../components/SectionRenderer";
 import { useParams } from "react-router-dom";
+import { formatDate } from "../utils/date";
 
 function ArticlePage() {
   const { id } = useParams<{ id: string }>();
@@ -17,6 +17,7 @@ function ArticlePage() {
           populate: {
             cover: { populate: "*" },
             blocks: { populate: "*" },
+            author: { populate: "*" },
           },
         },
       })
@@ -24,11 +25,48 @@ function ArticlePage() {
       .catch((err) => console.error("Error fetching data:", err));
   }, [id]);
 
+  if (!article) {
+    return <p>Ingen artikkel å vise</p>;
+  }
+
   return (
     <section>
-      <PageContent title={article?.title || "tittel"} image={article?.cover}>
-        <SectionRenderer sections={article?.blocks} />
-      </PageContent>
+      <article className="container mx-auto max-w-3xl px-4">
+        {/* Cover-bilde */}
+        {article.cover && (
+          <img
+            src={article.cover.url}
+            alt={article.cover.alternativeText || article.title}
+            className="rounded-lg w-full mb-6 object-cover max-h-96"
+          />
+        )}
+
+        {/* Tittel */}
+        <h1 className="text-4xl font-bold mb-2">{article.title}</h1>
+
+        {/* Metadata */}
+        <div className="text-sm text-gray-500 mb-6 flex gap-4 flex-wrap">
+          {article.publishedAt && (
+            <span>🗓️ {formatDate(article.publishedAt)}</span>
+          )}
+          {/* article.categories?.length && (
+            <span>🏷️ {article.categories.join(", ")}</span>
+          )*/}
+          {article.author && <span>✍️ {article.author.name}</span>}
+        </div>
+
+        {/* Ingress */}
+        {article.description && (
+          <p className="text-lg font-light leading-relaxed mb-8">
+            {article.description}
+          </p>
+        )}
+
+        {/* Innhold */}
+        <SectionRenderer sections={article.blocks} />
+
+        {/* Tilbake-lenke eller relaterte artikler? */}
+      </article>
     </section>
   );
 }

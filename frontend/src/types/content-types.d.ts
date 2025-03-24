@@ -8,6 +8,7 @@ export interface Article {
   cover: MediaAttributes;
   description: string;
   slug: string;
+  author: Person;
   blocks: Section[];
   createdAt: string;
   updatedAt: string;
@@ -50,6 +51,14 @@ export interface Location {
   address?: string;
   postal_code?: number;
   city?: string;
+}
+
+export interface Person {
+  name: string;
+  phone_number: string;
+  email: string;
+  profile_picture: MediaAttributes;
+  is_member: boolean;
 }
 
 export interface Page {
