@@ -26,8 +26,8 @@ function HeroSlide({
         backgroundImage: `url(${img})`,
       }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      <div className="container mx-auto max-w-screen-lg px-6  h-full flex items-center">
+      <div className="absolute inset-0 bg-black bg-opacity-50" />
+      <div className="container mx-auto px-6 h-full flex items-center">
         <div className="relative z-10 text-white max-w-2xl">
           <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
             {title}

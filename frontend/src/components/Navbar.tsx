@@ -13,7 +13,6 @@ interface NavbarElement {
   id: number;
   title: string;
   page: Page;
-
 }
 
 interface Navbar {
@@ -22,12 +21,9 @@ interface Navbar {
   order: number;
   pages: Page[];
   navbar_element: NavbarElement[];
-
 }
 
-
 export default function Navbar() {
-
   const [menu, setMenu] = useState<Navbar | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -36,30 +32,29 @@ export default function Navbar() {
       .get(`/navbars`, {
         params: {
           filter: {
-            name: { $eq: "Hovedmeny" }
+            name: { $eq: "Hovedmeny" },
           },
           populate: {
             navbar_element: {
               populate: {
                 page: {
-
-                  fields: [ "path" ]
-                }
-              }
+                  fields: ["path"],
+                },
+              },
             },
-            pages: { fields: ["title", "path"]}
-          }
+            pages: { fields: ["title", "path"] },
+          },
         },
       })
       .then((res) => setMenu(res.data.data[0]))
       .catch((err) => console.error("Error fetching data:", err));
-    }, []);
+  }, []);
 
-    console.log(menu)
+  console.log(menu);
 
   return (
     <nav className="bg-white dark:bg-gray-900 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
         <NavLink
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -98,7 +93,13 @@ export default function Navbar() {
         >
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             {menu?.navbar_element.map((item) => {
-              return <NavElement key={item.id} title={item.title} to={item.page.path} />
+              return (
+                <NavElement
+                  key={item.id}
+                  title={item.title}
+                  to={item.page.path}
+                />
+              );
             })}
           </ul>
         </div>

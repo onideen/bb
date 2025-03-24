@@ -33,6 +33,17 @@ export interface Event {
   // legg evt. til location her hvis det finnes
 }
 
+export interface ContentItem {
+  id: number;
+  title: string;
+  url: string;
+  image?: MediaAttributes;
+  shortText?: string;
+  when?: string;
+  where?: Location;
+  tags?: string[];
+}
+
 export interface Location {
   id: number;
   name: string;
