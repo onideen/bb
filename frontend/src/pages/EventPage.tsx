@@ -1,8 +1,28 @@
 import { formatDateTimeRange } from "../utils/date"; // lag egen
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Event } from "../types/content-types";
+import { useEffect, useState } from "react";
+import { api } from "../utils/api";
 
-const EventPage = ({ event }: { event: Event }) => {
+function EventPage() {
+  const { id } = useParams<{ id: string }>();
+  const [event, setArticle] = useState<Event>();
+
+  useEffect(() => {
+    if (!id) return; // Sjekk at slug faktisk finnes
+    api
+      .get(`/events/${id}`, {
+        params: {
+          populate: {
+            cover: { populate: "*" },
+            //blocks: { populate: "*" },
+          },
+        },
+      })
+      .then((res) => setArticle(res.data.data))
+      .catch((err) => console.error("Error fetching data:", err));
+  }, [id]);
+
   if (!event) return <p>Ingen event å vise</p>;
 
   return (
@@ -60,6 +80,6 @@ const EventPage = ({ event }: { event: Event }) => {
       </div>
     </article>
   );
-};
+}
 
 export default EventPage;

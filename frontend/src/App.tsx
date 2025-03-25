@@ -3,6 +3,7 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import RootNavigation from "./pages/Root";
 import GenericPage from "./pages/GenericPage";
 import ArticlePage from "./pages/ArticlePage";
+import EventPage from "./pages/EventPage";
 
 const router = createHashRouter([
   {
@@ -10,6 +11,7 @@ const router = createHashRouter([
     element: <RootNavigation />,
     children: [
       { path: "/artikler/:id", element: <ArticlePage /> },
+      { path: "/arrangementer/:id", element: <EventPage /> },
       { path: "/:path?", element: <GenericPage /> },
     ],
   },
