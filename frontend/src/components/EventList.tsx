@@ -8,10 +8,6 @@ interface EventListProps {
 }
 
 const EventList = ({ title, events }: EventListProps) => {
-  if (!events || events.length === 0) {
-    return <p>Ingen artikler tilgjengelig.</p>;
-  }
-
   return <ContentList title={title} items={events.map(mapEventToCardItem)} />;
 };
 

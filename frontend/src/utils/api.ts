@@ -35,7 +35,7 @@ export const fetchPageData = async (path: string): Promise<Page | null> => {
 };
 
 /**
- * Henter artikler for alle seksjoner av type "page.article-list".
+ * Henter artikler/eventer for alle seksjoner av type "page.article-list".
  */
 export const fetchItemsForSections = async <T>(
   sections: FetchableSection<unknown>[]
@@ -47,7 +47,8 @@ export const fetchItemsForSections = async <T>(
       const params: {
         filters: {
           category?: { $eq: string };
-          eventDate?: { $gte?: string; $lt?: string };
+          start_time?: { $gte?: string; $lt?: string };
+          is_featured?: { $eq: boolean };
         };
         sort: string[];
         pagination: { limit: number };
@@ -65,14 +66,18 @@ export const fetchItemsForSections = async <T>(
       if (section.category) {
         params.filters.category = { $eq: section.category };
       }
+      if (section.filter_type === "featured") {
+        params.filters.is_featured = { $eq: true };
+      }
 
       const apiType = componentToApiType[section.__component];
+
       if (apiType === "events") {
         params.populate.location = { populate: "*" };
         if (section.filter_type === "upcoming") {
-          params.filters.eventDate = { $gte: new Date().toISOString() };
+          params.filters.start_time = { $gte: new Date().toISOString() };
         } else if (section.filter_type === "past") {
-          params.filters.eventDate = { $lt: new Date().toISOString() };
+          params.filters.start_time = { $lt: new Date().toISOString() };
         }
       }
 

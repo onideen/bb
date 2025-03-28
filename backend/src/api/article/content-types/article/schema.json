@@ -4,8 +4,7 @@
   "info": {
     "singularName": "article",
     "pluralName": "articles",
-    "displayName": "Artikkel",
-    "description": "Skriv innlegg her"
+    "displayName": "Article"
   },
   "options": {
     "draftAndPublish": true
@@ -27,16 +26,12 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ]
+      "allowedTypes": ["images", "files", "videos"]
     },
-    "author": {
+    "authors": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::author.author",
+      "relation": "manyToMany",
+      "target": "api::person.person",
       "inversedBy": "articles"
     },
     "blocks": {

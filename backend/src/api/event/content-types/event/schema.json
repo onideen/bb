@@ -34,15 +34,6 @@
       "target": "api::location.location",
       "inversedBy": "events"
     },
-    "category": {
-      "type": "enumeration",
-      "enum": [
-        "kurs",
-        "møte",
-        "dugnad",
-        "lagsbigård"
-      ]
-    },
     "requires_registration": {
       "type": "boolean"
     },

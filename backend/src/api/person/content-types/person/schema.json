@@ -32,6 +32,12 @@
     "is_member": {
       "type": "boolean",
       "default": true
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "mappedBy": "authors"
     }
   }
 }

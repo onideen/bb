@@ -17,7 +17,7 @@ function ArticlePage() {
           populate: {
             cover: { populate: "*" },
             blocks: { populate: "*" },
-            author: { populate: "*" },
+            authors: { populate: "*" },
           },
         },
       })
@@ -52,7 +52,17 @@ function ArticlePage() {
           {/* article.categories?.length && (
             <span>🏷️ {article.categories.join(", ")}</span>
           )*/}
-          {article.author && <span>✍️ {article.author.name}</span>}
+          {article.authors?.length > 0 && (
+            <div className="text-sm text-gray-600 mb-4">
+              ✍️ Skrevet av{" "}
+              {article.authors.map((author, i) => (
+                <span key={i}>
+                  {author.name}
+                  {i < article.authors.length - 1 && ", "}
+                </span>
+              ))}
+            </div>
+          )}{" "}
         </div>
 
         {/* Ingress */}

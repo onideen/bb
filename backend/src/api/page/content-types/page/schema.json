@@ -38,12 +38,6 @@
       "unique": false,
       "required": false
     },
-    "navbar": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::navbar.navbar",
-      "inversedBy": "pages"
-    },
     "sections": {
       "type": "dynamiczone",
       "components": [

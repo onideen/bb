@@ -28,7 +28,10 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["files", "images"]
+      "allowedTypes": [
+        "files",
+        "images"
+      ]
     },
     "color": {
       "type": "string"

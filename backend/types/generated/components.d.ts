@@ -25,7 +25,7 @@ export interface PageArticleList extends Struct.ComponentSchema {
       'oneToMany',
       'api::article-category.article-category'
     >;
-    filter_type: Schema.Attribute.Enumeration<['siste', 'kategori']>;
+    filter_type: Schema.Attribute.Enumeration<['latest', 'featured']>;
     limit: Schema.Attribute.Integer;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
@@ -56,7 +56,7 @@ export interface PageEventList extends Struct.ComponentSchema {
       'oneToMany',
       'api::event-category.event-category'
     >;
-    filter_type: Schema.Attribute.Enumeration<['kommende', 'kategori']>;
+    filter_type: Schema.Attribute.Enumeration<['upcoming', 'past']>;
     limit: Schema.Attribute.Integer;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };

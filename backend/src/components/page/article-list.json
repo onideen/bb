@@ -10,8 +10,8 @@
     "filter_type": {
       "type": "enumeration",
       "enum": [
-        "siste",
-        "kategori"
+        "latest",
+        "featured"
       ]
     },
     "categories": {

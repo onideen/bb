@@ -16,16 +16,6 @@
       "type": "string",
       "required": true
     },
-    "pages": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::page.page",
-      "mappedBy": "navbar"
-    },
-    "order": {
-      "type": "integer",
-      "default": 0
-    },
     "navbar_element": {
       "displayName": "navbar_element",
       "type": "component",

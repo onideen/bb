@@ -42,7 +42,6 @@ export default function Navbar() {
                 },
               },
             },
-            pages: { fields: ["title", "path"] },
           },
         },
       })

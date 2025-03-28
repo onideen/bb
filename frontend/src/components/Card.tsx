@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import MediaRenderer, { MediaAttributes } from "./MediaRenderer";
 import { useState } from "react";
 import { Location } from "../types/content-types";
-import { formatDate } from "../utils/date";
 
 interface Props {
   image?: MediaAttributes;
@@ -83,9 +82,7 @@ export default function Card({
 
         {/* Når og hvor */}
         <div className="mt-auto pt-3 border-t border-gray-100 text-sm text-gray-700 dark:text-gray-300 space-y-1">
-          {when && (
-            <p className="text-sm text-gray-500">📅 {formatDate(when)}</p>
-          )}
+          {when && <p className="text-sm text-gray-500">📅 {when}</p>}
           {where && (
             <p className="text-sm text-gray-500 mb-2">📍 {where.name}</p>
           )}

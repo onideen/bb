@@ -8,7 +8,7 @@ export interface Article {
   cover: MediaAttributes;
   description: string;
   slug: string;
-  author: Person;
+  authors: Person[];
   blocks: Section[];
   createdAt: string;
   updatedAt: string;
@@ -31,6 +31,8 @@ export interface Event {
   event_state: "planlagt" | "publisert" | "avlyst" | "gjennomført"; // eller string
   cover?: MediaAttributes | null;
   location: Location;
+  content: Section[];
+  people: PersonRole[];
   // legg evt. til location her hvis det finnes
 }
 
@@ -61,6 +63,11 @@ export interface Person {
   is_member: boolean;
 }
 
+export interface PersonRole {
+  role: string;
+  person: Person;
+}
+
 export interface Page {
   id: number;
   documentId: string;
@@ -84,19 +91,21 @@ export interface FetchableSection<T> extends DynamicBlock {
   apiType: string;
   dataType: T[];
   category?: string;
-  filter_type?: "upcoming" | "past";
+  filter_type: string;
   limit?: number;
 }
 
 export interface ArticleList extends FetchableSection<Article> {
   __component: "page.article-list";
   apiType: "articles";
+  filter_type: "latest" | "featured";
   title: string;
 }
 
 export interface EventList extends FetchableSection<Event> {
   __component: "page.event-list";
   apiType: "events";
+  filter_type: "upcoming" | "past" | "featured" | "this_month" | "next_month";
   title: string;
 }
 

@@ -15,7 +15,7 @@ export default function SectionRenderer({
   sectionContent,
 }: Props) {
   if (!sections || sections.length === 0) {
-    return <p className="text-gray-500">Ingen innhold tilgjengelig</p>;
+    return;
   }
 
   return (
@@ -27,15 +27,16 @@ export default function SectionRenderer({
             case "page.article-list":
               return (
                 <ArticleList
-                  title="Artikler"
+                  title={section.title}
                   articles={data as Article[]}
                   key={index}
                 />
               );
             case "page.event-list":
+              console.log(data);
               return (
                 <EventList
-                  title="Events"
+                  title={section.title}
                   events={data as Event[]}
                   key={index}
                 />

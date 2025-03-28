@@ -10,8 +10,8 @@
     "filter_type": {
       "type": "enumeration",
       "enum": [
-        "kommende",
-        "kategori"
+        "upcoming",
+        "past"
       ]
     },
     "event_categories": {
