@@ -73,12 +73,6 @@
       "repeatable": true,
       "component": "shared.contact-entry"
     },
-    "event_categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::event-category.event-category",
-      "mappedBy": "events"
-    },
     "categories": {
       "type": "relation",
       "relation": "oneToMany",

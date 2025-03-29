@@ -21,10 +21,6 @@ export interface PageArticleList extends Struct.ComponentSchema {
     icon: 'book';
   };
   attributes: {
-    categories: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::article-category.article-category'
-    >;
     filter_type: Schema.Attribute.Enumeration<['latest', 'featured']>;
     limit: Schema.Attribute.Integer;
     title: Schema.Attribute.String & Schema.Attribute.Required;
@@ -52,10 +48,6 @@ export interface PageEventList extends Struct.ComponentSchema {
     icon: 'calendar';
   };
   attributes: {
-    event_categories: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::event-category.event-category'
-    >;
     filter_type: Schema.Attribute.Enumeration<['upcoming', 'past']>;
     limit: Schema.Attribute.Integer;
     title: Schema.Attribute.String & Schema.Attribute.Required;

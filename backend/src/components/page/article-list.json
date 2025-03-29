@@ -14,11 +14,6 @@
         "featured"
       ]
     },
-    "categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::article-category.article-category"
-    },
     "limit": {
       "type": "integer"
     },

@@ -48,12 +48,6 @@
         "shared.slider"
       ]
     },
-    "article_categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::article-category.article-category",
-      "mappedBy": "articles"
-    },
     "categories": {
       "type": "relation",
       "relation": "oneToMany",
