@@ -457,7 +457,7 @@ export interface ApiEventCategoryEventCategory
     singularName: 'event-category';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     color: Schema.Attribute.String;
@@ -570,7 +570,7 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
     singularName: 'location';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     address: Schema.Attribute.String;
