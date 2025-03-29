@@ -76,8 +76,10 @@ export const fetchItemsForSections = async <T>(
         params.populate.location = { populate: "*" };
         if (section.filter_type === "upcoming") {
           params.filters.start_time = { $gte: new Date().toISOString() };
+          params.sort = ["start_time:asc"];
         } else if (section.filter_type === "past") {
           params.filters.start_time = { $lt: new Date().toISOString() };
+          params.sort = ["start_time:desc"];
         }
       }
 
