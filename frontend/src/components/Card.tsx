@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import MediaRenderer, { MediaAttributes } from "./MediaRenderer";
 import { useState } from "react";
 import { Category, Location } from "../types/content-types";
+import CategoryTag from "./CategoryTag";
 
 interface Props {
   image?: MediaAttributes;
@@ -69,14 +70,11 @@ export default function Card({
         </div>
         {tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-3">
-            {tags.map((tag, index) => (
-              <span
-                key={index}
-                className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
-              >
-                {tag.name}
-              </span>
-            ))}
+            {tags
+              ?.filter((tag) => tag.show_as_tag)
+              .map((tag) => (
+                <CategoryTag key={tag.id} category={tag} />
+              ))}
           </div>
         )}
 

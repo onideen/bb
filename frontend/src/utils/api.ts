@@ -55,12 +55,13 @@ export const fetchItemsForSections = async <T>(
         populate: {
           cover: { populate: string };
           location?: { populate: string };
+          categories?: { populate: string };
         };
       } = {
         filters: {},
         sort: ["publishedAt:desc"],
         pagination: { limit: section.limit ?? 5 },
-        populate: { cover: { populate: "*" } },
+        populate: { cover: { populate: "*" }, categories: { populate: "*" } },
       };
 
       if (section.category) {

@@ -4,6 +4,7 @@ import { Event } from "../types/content-types";
 import { useEffect, useState } from "react";
 import { api } from "../utils/api";
 import SectionRenderer from "../components/SectionRenderer";
+import CategoryTag from "../components/CategoryTag";
 
 function EventPage() {
   const { id } = useParams<{ id: string }>();
@@ -18,6 +19,7 @@ function EventPage() {
             cover: { populate: "*" },
             content: { populate: "*" },
             people: { populate: "*" },
+            categories: { populate: "*" },
           },
         },
       })
@@ -50,9 +52,12 @@ function EventPage() {
               <p>📅 {formatDateTimeRange(event.start_time, event.end_time)}</p>
             )}
             {event.location?.name && <p>📍 {event.location.name}</p>}
-            {/* event.categories?.length > 0 && (
-          <p>🏷️ {event.categories.join(", ")}</p>
-          )*/}
+            {event.categories
+              ?.filter((cat) => cat.show_as_tag)
+              .map((cat) => (
+                <CategoryTag key={cat.id} category={cat} />
+              ))}
+
             {event.event_state && <p>📌 Status: {event.event_state}</p>}
           </div>
 

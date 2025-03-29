@@ -21,5 +21,6 @@ export function mapArticleToCardItem(article: Article): ContentItem {
     url: `/artikler/${article.documentId}`,
     image: article.cover ?? undefined,
     shortText: article.description,
+    tags: article.categories,
   };
 }

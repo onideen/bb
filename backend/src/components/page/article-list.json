@@ -20,6 +20,11 @@
     "title": {
       "type": "string",
       "required": true
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
     }
   }
 }
