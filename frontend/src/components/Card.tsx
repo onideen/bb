@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import MediaRenderer, { MediaAttributes } from "./MediaRenderer";
 import { useState } from "react";
-import { Location } from "../types/content-types";
+import { Category, Location } from "../types/content-types";
 
 interface Props {
   image?: MediaAttributes;
@@ -10,7 +10,7 @@ interface Props {
   shortText?: string;
   when?: string;
   where?: Location;
-  tags?: string[];
+  tags?: Category[];
 }
 
 export default function Card({
@@ -74,7 +74,7 @@ export default function Card({
                 key={index}
                 className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
               >
-                {tag}
+                {tag.name}
               </span>
             ))}
           </div>

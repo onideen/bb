@@ -10,7 +10,7 @@ export function mapEventToCardItem(event: Event): ContentItem {
     image: event.cover ?? undefined,
     when: formatDate(event.start_time),
     where: event.location,
-    tags: event.category ? [event.category] : [],
+    tags: event.categories ? event.categories : [],
   };
 }
 

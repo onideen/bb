@@ -56,7 +56,7 @@ export interface ContentItem {
   shortText?: string;
   when?: string;
   where?: Location;
-  tags?: string[];
+  tags?: Category[];
 }
 
 export interface Location {
