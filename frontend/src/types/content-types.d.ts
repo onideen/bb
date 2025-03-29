@@ -13,6 +13,7 @@ export interface Article {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  categories: Category[];
 }
 
 export interface Event {
@@ -25,7 +26,7 @@ export interface Event {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  category: string; // hvis det kun er én kategori (string), ellers string[]
+  event_categories: EventCategory[]; // hvis det kun er én kategori (string), ellers string[]
   requires_registration: boolean;
   registration_link?: string | null;
   event_state: "planlagt" | "publisert" | "avlyst" | "gjennomført"; // eller string
@@ -33,7 +34,18 @@ export interface Event {
   location: Location;
   content: Section[];
   people: PersonRole[];
-  // legg evt. til location her hvis det finnes
+  categories: Category[];
+}
+
+export interface Category {
+  id: number;
+  documentId: string;
+  name: string;
+  description: string;
+  icon: string;
+  color: string;
+  priority: number;
+  show_as_tag: boolean;
 }
 
 export interface ContentItem {

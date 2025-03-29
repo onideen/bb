@@ -78,6 +78,11 @@
       "relation": "manyToMany",
       "target": "api::event-category.event-category",
       "mappedBy": "events"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
     }
   }
 }
