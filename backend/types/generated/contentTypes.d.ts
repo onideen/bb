@@ -460,7 +460,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     singularName: 'category';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     color: Schema.Attribute.String;
