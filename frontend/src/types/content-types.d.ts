@@ -74,12 +74,16 @@ export interface PersonWithRole {
   is_primary_contact?: boolean;
 }
 
-interface OrganizerInfo {
-  organizer: {
-    id: number;
-    name: string;
-  };
+export interface OrganizerInfo {
+  organizer: Organizer;
   people: PersonWithRole[];
+}
+
+export interface Organizer {
+  id: number;
+  name: string;
+  logo?: MediaAttributes;
+  website: string;
 }
 
 export interface Location {

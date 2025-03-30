@@ -18,7 +18,12 @@ function EventPage() {
           populate: {
             cover: { populate: "*" },
             content: { populate: "*" },
-            people: { populate: "*" },
+            organizers: {
+              populate: {
+                organizer: { populate: "*" },
+                people: { populate: "*" },
+              },
+            },
             categories: { populate: "*" },
           },
         },
