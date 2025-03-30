@@ -477,7 +477,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     location: Schema.Attribute.Relation<'manyToOne', 'api::location.location'>;
     organizers: Schema.Attribute.Component<'event.organizer-with-people', true>;
-    people: Schema.Attribute.Component<'shared.contact-entry', true>;
     publishedAt: Schema.Attribute.DateTime;
     registration_link: Schema.Attribute.String;
     requires_registration: Schema.Attribute.Boolean;

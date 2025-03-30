@@ -68,11 +68,6 @@
         "shared.media"
       ]
     },
-    "people": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.contact-entry"
-    },
     "categories": {
       "type": "relation",
       "relation": "oneToMany",
