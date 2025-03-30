@@ -85,24 +85,19 @@ export default function Card({
           <PeopleTeaser people={organizers.flatMap((org) => org.people)} />
         )}
 
-        {/* Når og hvor */}
-        {(time || location) && <hr className="my-2 border-gray-200" />}
-
-        {/* Når og hvor */}
-        {time && (
-          <div className="flex items-center gap-2 text-sm text-gray-700">
-            <span role="img" aria-label="kalender">
-              📅
-            </span>
-            {time}
-          </div>
-        )}
-        {location && (
-          <div className="flex items-center gap-2 text-sm text-gray-700">
-            <span role="img" aria-label="sted">
-              📍
-            </span>
-            {location.name}
+        {/* Footer */}
+        {(time || location) && (
+          <div className="mt-auto pt-4 border-t border-gray-100 space-y-1">
+            {time && (
+              <div className="flex items-center gap-2 text-sm text-gray-700">
+                📅 {time}
+              </div>
+            )}
+            {location && (
+              <div className="flex items-center gap-2 text-sm text-gray-700">
+                📍 {location.name}
+              </div>
+            )}
           </div>
         )}
       </div>
