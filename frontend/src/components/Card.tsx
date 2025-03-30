@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import MediaRenderer, { MediaAttributes } from "./MediaRenderer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Category, Location, OrganizerInfo } from "../types/content-types";
 import CategoryTag from "./CategoryTag";
 import PeopleTeaser from "./PeopleTeaser";
+import { Calendar, ImageOff, MapPin } from "lucide-react";
 
 interface Props {
   image?: MediaAttributes;
@@ -21,13 +22,19 @@ export default function Card({
   url,
   title,
   shortText,
-  time: time,
-  location: location,
+  time,
+  location,
   tags,
   organizers,
 }: Props) {
   const [isLoading, setIsLoading] = useState(true);
   //    const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    if (!image) {
+      setIsLoading(false);
+    }
+  }, [image]);
 
   return (
     <Link
@@ -49,13 +56,15 @@ export default function Card({
         ) : (
           <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500">
             {/* valgfritt: Ikon eller tekst */}
-            <span>Ingen bilde</span>
+            <span>
+              <ImageOff className="w-4 h-4" />
+            </span>
           </div>
         )}
 
         {/* Grå bakgrunn under lasting (overlapping fallback) */}
         {isLoading && (
-          <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-400"></div>
+          <div className="absolute inset-0 animate-pulse bg-gray-200"></div>
         )}
       </div>
       {/* Innhold */}
@@ -82,7 +91,9 @@ export default function Card({
         )}
 
         {organizers && (
-          <PeopleTeaser people={organizers.flatMap((org) => org.people)} />
+          <PeopleTeaser
+            people={organizers.flatMap((org) => org.people ?? [])}
+          />
         )}
 
         {/* Footer */}
@@ -90,12 +101,14 @@ export default function Card({
           <div className="mt-auto pt-4 border-t border-gray-100 space-y-1">
             {time && (
               <div className="flex items-center gap-2 text-sm text-gray-700">
-                📅 {time}
+                <Calendar className="w-4 h-4" />
+                {time}
               </div>
             )}
             {location && (
               <div className="flex items-center gap-2 text-sm text-gray-700">
-                📍 {location.name}
+                <MapPin className="w-4 h-4" />
+                {location.name}
               </div>
             )}
           </div>

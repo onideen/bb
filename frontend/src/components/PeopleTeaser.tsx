@@ -1,3 +1,4 @@
+import { UserCog } from "lucide-react";
 import { PersonWithRole } from "../types/content-types";
 
 interface Props {
@@ -11,8 +12,8 @@ const PeopleTeaser = ({ people }: Props) => {
   const names = visiblePeople.map((p) => p.person.name);
 
   return (
-    <div className="text-sm text-gray-600">
-      <span className="text-gray-500">👤 </span>{" "}
+    <div className="text-sm text-gray-600 flex items-center gap-1">
+      <UserCog className="w-4 h-4 text-gray-500" />
       <span className="font-medium">{names.join(", ")}</span>
     </div>
   );
