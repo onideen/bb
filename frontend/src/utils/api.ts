@@ -46,7 +46,7 @@ export const fetchItemsForSections = async <T>(
     const requests = sections.map((section) => {
       const params: {
         filters: {
-          category?: { $eq: string };
+          categories?: { id: { $in: string } };
           start_time?: { $gte?: string; $lt?: string };
           is_featured?: { $eq: boolean };
         };
@@ -70,8 +70,10 @@ export const fetchItemsForSections = async <T>(
         populate: { cover: { populate: "*" }, categories: { populate: "*" } },
       };
 
-      if (section.category) {
-        params.filters.category = { $eq: section.category };
+      if (section.categories !== undefined && section.categories?.length > 0) {
+        params.filters.categories = {
+          id: { $in: section.categories?.map((cat) => cat.id).join(",") },
+        };
       }
       if (section.filter_type === "featured") {
         params.filters.is_featured = { $eq: true };

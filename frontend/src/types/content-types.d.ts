@@ -127,7 +127,7 @@ export interface DynamicBlock {
 export interface FetchableSection<T> extends DynamicBlock {
   apiType: string;
   dataType: T[];
-  category?: string;
+  categories?: Category[];
   filter_type: string;
   limit?: number;
 }
