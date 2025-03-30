@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_event_organizer_with_people",
+  "info": {
+    "displayName": "organizer_with_people",
+    "icon": "calendar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "organizer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::organizer.organizer"
+    },
+    "people": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.person-with-role"
+    }
+  }
+}

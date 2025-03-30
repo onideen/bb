@@ -77,6 +77,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::category.category"
+    },
+    "organizers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "event.organizer-with-people"
     }
   }
 }

@@ -476,6 +476,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
     location: Schema.Attribute.Relation<'manyToOne', 'api::location.location'>;
+    organizers: Schema.Attribute.Component<'event.organizer-with-people', true>;
     people: Schema.Attribute.Component<'shared.contact-entry', true>;
     publishedAt: Schema.Attribute.DateTime;
     registration_link: Schema.Attribute.String;
@@ -587,6 +588,36 @@ export interface ApiNavbarNavbar extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiOrganizerOrganizer extends Struct.CollectionTypeSchema {
+  collectionName: 'organizers';
+  info: {
+    displayName: 'organizer';
+    pluralName: 'organizers';
+    singularName: 'organizer';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::organizer.organizer'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files'>;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.String;
   };
 }
 
@@ -1178,6 +1209,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::location.location': ApiLocationLocation;
       'api::navbar.navbar': ApiNavbarNavbar;
+      'api::organizer.organizer': ApiOrganizerOrganizer;
       'api::page.page': ApiPagePage;
       'api::person.person': ApiPersonPerson;
       'plugin::content-releases.release': PluginContentReleasesRelease;

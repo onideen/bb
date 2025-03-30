@@ -35,6 +35,7 @@ export interface Event {
   content: Section[];
   people: PersonRole[];
   categories: Category[];
+  organizers?: OrganizerInfo[];
 }
 
 export interface Category {
@@ -57,6 +58,28 @@ export interface ContentItem {
   when?: string;
   where?: Location;
   tags?: Category[];
+  organizers?: OrganizerInfo[];
+}
+
+export interface PersonWithRole {
+  id: number;
+  documentId: string;
+  person: Person;
+  role: string;
+  show_in_preview: boolean;
+  show_contact_info: boolean;
+  show_description: boolean;
+  show_image?: boolean;
+  show_role?: boolean;
+  is_primary_contact?: boolean;
+}
+
+interface OrganizerInfo {
+  organizer: {
+    id: number;
+    name: string;
+  };
+  people: PersonWithRole[];
 }
 
 export interface Location {
@@ -68,6 +91,8 @@ export interface Location {
 }
 
 export interface Person {
+  id: number;
+  documentId: string;
   name: string;
   phone_number: string;
   email: string;

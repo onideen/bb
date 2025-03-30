@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_person_person_with_roles",
+  "info": {
+    "displayName": "person_with_role",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "person": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::person.person"
+    },
+    "role": {
+      "type": "string"
+    },
+    "show_contact_info": {
+      "type": "boolean"
+    },
+    "show_description": {
+      "type": "boolean"
+    },
+    "show_in_preview": {
+      "type": "boolean"
+    },
+    "show_image": {
+      "type": "boolean"
+    },
+    "show_role": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import MediaRenderer, { MediaAttributes } from "./MediaRenderer";
 import { useState } from "react";
-import { Category, Location } from "../types/content-types";
+import { Category, Location, OrganizerInfo } from "../types/content-types";
 import CategoryTag from "./CategoryTag";
 
 interface Props {
@@ -9,9 +9,10 @@ interface Props {
   url: string;
   title: string;
   shortText?: string;
-  when?: string;
-  where?: Location;
+  time?: string;
+  location?: Location;
   tags?: Category[];
+  organizers?: OrganizerInfo[];
 }
 
 export default function Card({
@@ -19,9 +20,10 @@ export default function Card({
   url,
   title,
   shortText,
-  when,
-  where,
+  time: time,
+  location: location,
   tags,
+  organizers,
 }: Props) {
   const [isLoading, setIsLoading] = useState(true);
   //    const [hasError, setHasError] = useState(false);
@@ -29,8 +31,8 @@ export default function Card({
   return (
     <Link
       to={url}
-      aria-label={`Gå til ${title}`}
-      className="flex flex-col h-[420px] bg-white border border-gray-200 
+      aria-label={`Åpne ${title}`}
+      className="flex flex-col min-h-[420px] h-full bg-white border border-gray-200 
       rounded-md shadow-sm overflow-hidden transition-shadow duration-300 hover:shadow-md dark:bg-gray-800 dark:border-gray-700"
     >
       <div className="w-full h-48 relative">
@@ -56,20 +58,13 @@ export default function Card({
         )}
       </div>
       {/* Innhold */}
-      <div className="flex flex-col flex-grow p-5">
+      <div className="flex flex-col flex-grow p-5 gap-y-2">
         {/* Tittel og tekst */}
-        <div>
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {title}
-          </h5>
-          {shortText && (
-            <p className="text-sm font-normal text-gray-700 dark:text-gray-400">
-              {shortText}
-            </p>
-          )}
-        </div>
+        <h5 className="text-xl font-semibold text-gray-900 dark:text-white">
+          {title}
+        </h5>
         {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-1 mb-3">
+          <div className="flex flex-wrap gap-2">
             {tags
               ?.filter((tag) => tag.show_as_tag)
               .map((tag) => (
@@ -77,14 +72,46 @@ export default function Card({
               ))}
           </div>
         )}
+        {shortText && (
+          <div>
+            <p className="text-sm mt-1 font-normal text-gray-700 dark:text-gray-400">
+              {shortText}
+            </p>
+          </div>
+        )}
+        {organizers && organizers?.length > 0 && (
+          <div className="text-sm text-gray-600 mt-1 space-y-1">
+            {organizers.flatMap((org) =>
+              org.people
+                .filter((p) => p.show_in_preview)
+                .map((p) => (
+                  <div key={p.person.documentId}>
+                    <span className="font-medium">{p.person.name}</span>
+                  </div>
+                ))
+            )}
+          </div>
+        )}
+        {/* Når og hvor */}
+        {(time || location) && <hr className="my-2 border-gray-200" />}
 
         {/* Når og hvor */}
-        <div className="mt-auto pt-3 border-t border-gray-100 text-sm text-gray-700 dark:text-gray-300 space-y-1">
-          {when && <p className="text-sm text-gray-500">📅 {when}</p>}
-          {where && (
-            <p className="text-sm text-gray-500 mb-2">📍 {where.name}</p>
-          )}
-        </div>
+        {time && (
+          <div className="flex items-center gap-2 text-sm text-gray-700">
+            <span role="img" aria-label="kalender">
+              📅
+            </span>
+            {time}
+          </div>
+        )}
+        {location && (
+          <div className="flex items-center gap-2 text-sm text-gray-700">
+            <span role="img" aria-label="sted">
+              📍
+            </span>
+            {location.name}
+          </div>
+        )}
       </div>
     </Link>
   );

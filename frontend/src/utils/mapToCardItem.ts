@@ -11,6 +11,7 @@ export function mapEventToCardItem(event: Event): ContentItem {
     when: formatDate(event.start_time),
     where: event.location,
     tags: event.categories ? event.categories : [],
+    organizers: event.organizers,
   };
 }
 

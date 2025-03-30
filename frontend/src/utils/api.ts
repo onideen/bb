@@ -56,6 +56,12 @@ export const fetchItemsForSections = async <T>(
           cover: { populate: string };
           location?: { populate: string };
           categories?: { populate: string };
+          organizers?: {
+            populate: {
+              organizer: { populate: string };
+              people: { populate: string };
+            };
+          };
         };
       } = {
         filters: {},
@@ -75,6 +81,14 @@ export const fetchItemsForSections = async <T>(
 
       if (apiType === "events") {
         params.populate.location = { populate: "*" };
+        params.populate.organizers = {
+          populate: {
+            organizer: { populate: "*" },
+            people: {
+              populate: "person",
+            },
+          },
+        };
         if (section.filter_type === "upcoming") {
           params.filters.start_time = { $gte: new Date().toISOString() };
           params.sort = ["start_time:asc"];

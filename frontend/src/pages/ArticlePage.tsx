@@ -4,6 +4,7 @@ import { Article } from "../types/content-types";
 import SectionRenderer from "../components/SectionRenderer";
 import { useParams } from "react-router-dom";
 import { formatDate } from "../utils/date";
+import CategoryTag from "../components/CategoryTag";
 
 function ArticlePage() {
   const { id } = useParams<{ id: string }>();
@@ -18,6 +19,7 @@ function ArticlePage() {
             cover: { populate: "*" },
             blocks: { populate: "*" },
             authors: { populate: "*" },
+            categories: { populate: "*" },
           },
         },
       })
@@ -49,9 +51,11 @@ function ArticlePage() {
           {article.publishedAt && (
             <span>🗓️ {formatDate(article.publishedAt)}</span>
           )}
-          {/* article.categories?.length && (
-            <span>🏷️ {article.categories.join(", ")}</span>
-          )*/}
+          {article.categories
+            ?.filter((cat) => cat.show_as_tag)
+            .map((cat) => (
+              <CategoryTag key={cat.id} category={cat} />
+            ))}
           {article.authors?.length > 0 && (
             <div className="text-sm text-gray-600 mb-4">
               ✍️ Skrevet av{" "}
