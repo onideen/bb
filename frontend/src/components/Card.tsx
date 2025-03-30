@@ -3,6 +3,7 @@ import MediaRenderer, { MediaAttributes } from "./MediaRenderer";
 import { useState } from "react";
 import { Category, Location, OrganizerInfo } from "../types/content-types";
 import CategoryTag from "./CategoryTag";
+import PeopleTeaser from "./PeopleTeaser";
 
 interface Props {
   image?: MediaAttributes;
@@ -79,19 +80,11 @@ export default function Card({
             </p>
           </div>
         )}
-        {organizers && organizers?.length > 0 && (
-          <div className="text-sm text-gray-600 mt-1 space-y-1">
-            {organizers.flatMap((org) =>
-              org.people
-                .filter((p) => p.show_in_preview)
-                .map((p) => (
-                  <div key={p.person.documentId}>
-                    <span className="font-medium">{p.person.name}</span>
-                  </div>
-                ))
-            )}
-          </div>
+
+        {organizers && (
+          <PeopleTeaser people={organizers.flatMap((org) => org.people)} />
         )}
+
         {/* Når og hvor */}
         {(time || location) && <hr className="my-2 border-gray-200" />}
 
