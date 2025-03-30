@@ -1,12 +1,12 @@
 import { PersonWithRole } from "../types/content-types";
 
 interface Props {
-  people: PersonWithRole[];
+  people?: PersonWithRole[];
 }
 
 const PeopleTeaser = ({ people }: Props) => {
-  const visiblePeople = people.filter((p) => p.show_in_preview);
-  if (visiblePeople.length === 0) return null;
+  const visiblePeople = people?.filter((p) => p.show_in_preview);
+  if (visiblePeople === undefined || visiblePeople.length === 0) return null;
 
   const names = visiblePeople.map((p) => p.person.name);
 
