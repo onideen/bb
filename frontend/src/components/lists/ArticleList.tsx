@@ -1,5 +1,6 @@
-import { Article } from "../types/content-types";
-import { mapArticleToCardItem } from "../utils/mapToCardItem";
+import { Article } from "../../types/content-types";
+import { mapArticleToCardItem } from "../../utils/mapToCardItem";
+import { ArticleCard } from "../cards";
 import ContentList from "./ContentList";
 
 interface ArticleListProps {
@@ -13,7 +14,11 @@ const ArticleList = ({ title, articles }: ArticleListProps) => {
   }
 
   return (
-    <ContentList title={title} items={articles.map(mapArticleToCardItem)} />
+    <ContentList
+      title={title}
+      items={articles.map(mapArticleToCardItem)}
+      cardComponent={ArticleCard}
+    />
   );
 };
 

@@ -1,12 +1,18 @@
-import { ContentItem } from "../types/content-types";
-import Card from "./Card";
+import React from "react";
+import { ContentItem } from "../../types/content-types";
+import Card from "../Card";
 
 interface Props {
   title: string;
   items: ContentItem[];
+  cardComponent?: React.ComponentType<ContentItem>;
 }
 
-const ContentList = ({ title, items }: Props) => {
+const ContentList = ({
+  title,
+  items,
+  cardComponent: CardComponent = Card,
+}: Props) => {
   return (
     <>
       <div className="py-6">
@@ -15,16 +21,7 @@ const ContentList = ({ title, items }: Props) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {items.map((item) => (
               <div className="h-full" key={item.id}>
-                <Card
-                  title={item.title}
-                  shortText={item.shortText}
-                  url={item.url}
-                  image={item.image}
-                  time={item.when}
-                  location={item.where}
-                  tags={item.tags}
-                  organizers={item.organizers}
-                />
+                <CardComponent {...item} />
               </div>
             ))}
           </div>

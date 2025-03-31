@@ -1,8 +1,8 @@
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import MediaRenderer from "./MediaRenderer";
 import { Section, SectionContentMap } from "../types/content-types";
-import ArticleList from "./ArticleList";
-import EventList from "./EventList";
+import ArticleList from "./lists/ArticleList";
+import EventList from "./lists/EventList";
 
 interface Props {
   sections?: Section[];
