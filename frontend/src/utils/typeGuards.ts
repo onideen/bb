@@ -7,8 +7,6 @@ import {
 export function isFetchableSection(
   section: Section
 ): section is FetchableSections {
-  console.log("Sjekker section:", section);
-
   const fetchableComponents = ["page.article-list", "page.event-list"]; // 🎯 Alle `FetchableSections`
 
   if (

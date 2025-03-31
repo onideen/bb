@@ -23,6 +23,8 @@ export default function SectionRenderer({
       {sections.map((section, index) => {
         if (isFetchableSection(section)) {
           const data = sectionContent?.[section.id] ?? [];
+          console.log("SECTION: " + section.id);
+          console.log(data);
           switch (section.__component) {
             case "page.article-list":
               return (
@@ -33,7 +35,6 @@ export default function SectionRenderer({
                 />
               );
             case "page.event-list":
-              console.log(data);
               return (
                 <EventList
                   title={section.title}

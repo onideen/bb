@@ -41,7 +41,6 @@ export const fetchItemsForSections = async <T>(
   sections: FetchableSection<unknown>[]
 ): Promise<Record<number, T[]>> => {
   if (!sections || sections.length === 0) return {};
-  console.log(sections);
   try {
     const requests = sections.map((section) => {
       const params: {

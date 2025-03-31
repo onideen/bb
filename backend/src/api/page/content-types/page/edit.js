@@ -1,7 +1,6 @@
 export default {
   modifyEditView({ layout }) {
     const alwaysActiveFields = ["path", "title"]; // 🚀 Disse feltene skal alltid være aktivert
-    console.log("EDIT: EREKJRLNLKFD")
     return {
       ...layout,
       sections: layout.sections.map((section) => ({
@@ -10,8 +9,10 @@ export default {
           return {
             ...field,
             disabled: ({ modifiedData }) => {
-              console.log("modifiedData:", modifiedData); // 🚀 Debugging
-              return modifiedData?.external === true && !alwaysActiveFields.includes(field.name);
+              return (
+                modifiedData?.external === true &&
+                !alwaysActiveFields.includes(field.name)
+              );
             },
             description: ({ modifiedData }) =>
               modifiedData?.external && !alwaysActiveFields.includes(field.name)

@@ -57,8 +57,6 @@ const GenericPage = () => {
   if (error) return <p>Feil: {error}</p>;
   if (!pageData) return <p>Fant ikke siden.</p>; // Hindrer videre kjøring
 
-  console.log(items);
-
   return (
     <section>
       <PageContent title={pageData?.title || "tittel"} image={pageData?.cover}>

@@ -10,7 +10,6 @@ import "swiper/css/pagination";
 import HeroSlide from "./HeroSlide";
 
 function HeroSection() {
-  console.log(image1);
   const slides = [
     {
       image: image3,
@@ -43,7 +42,6 @@ function HeroSection() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            {console.log(slide)}
             <HeroSlide {...slide} />
           </SwiperSlide>
         ))}
