@@ -9,6 +9,10 @@ interface Props {
   sectionContent?: SectionContentMap;
 }
 
+function assertNever(value: never): never {
+  throw new Error(`Ukjent seksjon: ${JSON.stringify(value)}`);
+}
+
 export default function SectionRenderer({ sections, sectionContent }: Props) {
   if (!sections || sections.length === 0) return null;
 
@@ -51,9 +55,7 @@ export default function SectionRenderer({ sections, sectionContent }: Props) {
             return <MediaRenderer file={section.file} key={index} />;
 
           default: {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const _exhaustive: never = section;
-            return <div key={index}>Ukjent seksjonstype</div>;
+            return assertNever(section);
           }
         }
       })}
