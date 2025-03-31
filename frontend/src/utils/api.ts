@@ -1,5 +1,10 @@
 import axios, { AxiosResponse } from "axios";
-import { FetchableSection, Page } from "../types/content-types";
+import {
+  ComponentDataMap,
+  FetchableSection,
+  Page,
+  SectionContentMap,
+} from "../types/content-types";
 import { componentToApiType } from "./sectionApiMap";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:1337/api";
 
@@ -39,7 +44,7 @@ export const fetchPageData = async (path: string): Promise<Page | null> => {
  */
 export const fetchItemsForSections = async <T>(
   sections: FetchableSection<unknown>[]
-): Promise<Record<number, T[]>> => {
+): Promise<SectionContentMap> => {
   if (!sections || sections.length === 0) return {};
   try {
     const requests = sections.map((section) => {
@@ -104,10 +109,21 @@ export const fetchItemsForSections = async <T>(
 
     const responses = await axios.all(requests);
 
-    return responses.reduce((acc, response, index) => {
-      acc[sections[index].id] = response.data.data;
-      return acc;
-    }, {} as Record<number, T[]>);
+    const result: SectionContentMap = {};
+
+    responses.forEach((response, index) => {
+      const section = sections[index];
+      const component = section.__component as keyof ComponentDataMap;
+
+      if (!result[component]) {
+        result[component] = {};
+      }
+
+      (result[component] as Record<number, unknown[]>)[section.id] =
+        response.data.data;
+    });
+
+    return result;
   } catch (err: unknown) {
     if (axios.isAxiosError(err)) {
       throw new Error(err.response?.data?.message || err.message);

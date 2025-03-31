@@ -38,6 +38,16 @@ export interface Event {
   organizers?: OrganizerInfo[];
 }
 
+export type SectionContentMap = {
+  [K in keyof ComponentDataMap]?: Record<number, ComponentDataMap[K]>;
+};
+
+export type ComponentDataMap = {
+  "page.article-list": Article[];
+  "page.event-list": Event[];
+  // legg til flere her etter behov
+};
+
 export interface Category {
   id: number;
   documentId: string;

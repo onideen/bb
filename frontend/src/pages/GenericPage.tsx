@@ -3,14 +3,14 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchItemsForSections, fetchPageData } from "../utils/api";
 import SectionRenderer from "../components/SectionRenderer";
 import { useParams } from "react-router-dom";
-import { Page } from "../types/content-types";
+import { Page, SectionContentMap } from "../types/content-types";
 import { isFetchableSection } from "../utils/typeGuards";
 
 const GenericPage = () => {
   const { path } = useParams<{ path: string }>();
 
   const [pageData, setPageData] = useState<Page | null>(null);
-  const [items, setItems] = useState<Record<number, unknown[]>>({});
+  const [items, setItems] = useState<SectionContentMap>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,6 +35,7 @@ const GenericPage = () => {
     try {
       const fetchableSections = pageData.sections.filter(isFetchableSection);
       const allData = await fetchItemsForSections(fetchableSections);
+      console.log(allData);
       setItems(allData);
     } catch (err: unknown) {
       setError((err as Error).message);
