@@ -7,6 +7,7 @@ interface CardBaseProps {
   image?: MediaAttributes;
   url: string;
   title: string;
+  imageHeight?: string; // f.eks. "h-48", "h-64", "h-72"
   children?: ReactNode;
 }
 
@@ -14,9 +15,11 @@ export default function CardBase({
   image,
   url,
   title,
+  imageHeight,
   children,
 }: CardBaseProps) {
   const [isLoading, setIsLoading] = useState(!!image);
+  const resolvedImageHeight = imageHeight ?? "h-48";
 
   useEffect(() => {
     if (!image) setIsLoading(false);
@@ -27,8 +30,8 @@ export default function CardBase({
         <Link
           to={url}
           aria-label={`Åpne ${title}`}
-          className="flex flex-col min-h-[420px] h-full bg-white border border-gray-200 
-        rounded-md shadow-sm overflow-hidden transition-shadow duration-300 hover:shadow-md dark:bg-gray-800 dark:border-gray-700"
+          className={`flex flex-col ${resolvedImageHeight} h-full bg-white border border-gray-200 
+        rounded-md shadow-sm overflow-hidden transition-shadow duration-300 hover:shadow-md dark:bg-gray-800 dark:border-gray-700`}
         >
           {props.children}
         </Link>
