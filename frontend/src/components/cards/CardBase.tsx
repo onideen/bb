@@ -22,13 +22,21 @@ export default function CardBase({
     if (!image) setIsLoading(false);
   }, [image]);
 
-  return (
-    <Link
-      to={url}
-      aria-label={`Åpne ${title}`}
-      className="flex flex-col min-h-[420px] h-full bg-white border border-gray-200 
+  const CardWrapper = url
+    ? (props: { children: ReactNode }) => (
+        <Link
+          to={url}
+          aria-label={`Åpne ${title}`}
+          className="flex flex-col min-h-[420px] h-full bg-white border border-gray-200 
         rounded-md shadow-sm overflow-hidden transition-shadow duration-300 hover:shadow-md dark:bg-gray-800 dark:border-gray-700"
-    >
+        >
+          {props.children}
+        </Link>
+      )
+    : (props: { children: ReactNode }) => <div>{props.children}</div>;
+
+  return (
+    <CardWrapper>
       <div className="w-full h-48 relative">
         {image ? (
           <MediaRenderer
@@ -48,12 +56,7 @@ export default function CardBase({
           <div className="absolute inset-0 animate-pulse bg-gray-200"></div>
         )}
       </div>
-      <div className="flex flex-col flex-grow p-5 gap-y-2">
-        <h5 className="text-xl font-semibold text-gray-900 dark:text-white">
-          {title}
-        </h5>
-        {children}
-      </div>
-    </Link>
+      <div className="flex flex-col flex-grow p-5 gap-y-2">{children}</div>
+    </CardWrapper>
   );
 }

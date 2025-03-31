@@ -1,9 +1,10 @@
 import { Category, Location, OrganizerInfo } from "../../types/content-types";
-import CategoryTag from "../CategoryTag";
 import { MediaAttributes } from "../MediaRenderer";
 import PeopleTeaser from "../PeopleTeaser";
 import CardBase from "./CardBase";
 import { Calendar, MapPin } from "lucide-react";
+import CardHeader from "./CardHeader";
+import CardTags from "./CardTags";
 
 interface Props {
   title: string;
@@ -26,15 +27,8 @@ export default function EventCard({
 }: Props) {
   return (
     <CardBase title={title} url={url} image={image}>
-      {tags && tags.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {tags
-            .filter((tag) => tag.show_as_tag)
-            .map((tag) => (
-              <CategoryTag key={tag.id} category={tag} />
-            ))}
-        </div>
-      )}
+      <CardHeader title={title} />
+      <CardTags tags={tags} />
       {organizers && (
         <PeopleTeaser people={organizers.flatMap((org) => org.people ?? [])} />
       )}
