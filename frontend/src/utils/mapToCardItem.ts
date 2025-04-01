@@ -1,4 +1,4 @@
-import { Event, Article } from "../types/content-types";
+import { Event, Article, PersonWithRole } from "../types/content-types";
 import { ContentItem } from "../types/content-types";
 import { formatDate } from "./date";
 
@@ -8,8 +8,8 @@ export function mapEventToCardItem(event: Event): ContentItem {
     title: event.short_title || event.title,
     url: `/arrangementer/${event.documentId}`,
     image: event.cover ?? undefined,
-    when: formatDate(event.start_time),
-    where: event.location,
+    time: formatDate(event.start_time),
+    location: event.location,
     tags: event.categories ? event.categories : [],
     organizers: event.organizers,
   };
@@ -23,5 +23,15 @@ export function mapArticleToCardItem(article: Article): ContentItem {
     image: article.cover ?? undefined,
     shortText: article.description,
     tags: article.categories,
+  };
+}
+
+export function mapPersonWithRoleToCardItem(
+  person_with_role: PersonWithRole
+): ContentItem {
+  return {
+    id: person_with_role.person.id,
+    title: person_with_role.person.name,
+    url: "test",
   };
 }

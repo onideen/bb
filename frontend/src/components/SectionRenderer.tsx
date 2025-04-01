@@ -44,6 +44,18 @@ export default function SectionRenderer({ sections, sectionContent }: Props) {
             );
           }
 
+          case "page.contact-list": {
+            return (
+              <p>Ikke implementert visning</p>
+              /*
+              <ContactList
+                key={index}
+                title={section.title}
+                contacts={section.people}
+              /> */
+            );
+          }
+
           case "shared.rich-text":
             return (
               <div className="prose" key={index}>

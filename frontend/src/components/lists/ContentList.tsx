@@ -13,6 +13,8 @@ const ContentList = ({
   items,
   cardComponent: CardComponent = Card,
 }: Props) => {
+  console.log("Items");
+  console.log(items);
   return (
     <>
       <div className="py-6">

@@ -65,8 +65,8 @@ export interface ContentItem {
   url: string;
   image?: MediaAttributes;
   shortText?: string;
-  when?: string;
-  where?: Location;
+  time?: string;
+  location?: Location;
   tags?: Category[];
   organizers?: OrganizerInfo[];
 }
@@ -165,12 +165,18 @@ export interface RichTextBlock extends DynamicBlock {
   innhold: BlocksContent;
 }
 
+export interface ContactList extends DynamicBlock {
+  __component: "page.contact-list";
+  title: string;
+  people: PersonWithRole[];
+}
+
 export interface MediaBlock extends DynamicBlock {
   __component: "shared.media";
   file: MediaAttributes;
 }
 
 export type FetchableSections = ArticleList | EventList;
-export type StaticSections = RichTextBlock | MediaBlock;
+export type StaticSections = RichTextBlock | MediaBlock | ContactList;
 
 export type Section = FetchableSections | StaticSections;
