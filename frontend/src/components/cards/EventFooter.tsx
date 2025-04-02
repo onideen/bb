@@ -4,11 +4,10 @@ import { Location } from "../../types/content-types";
 interface Props {
   time?: string;
   location?: Location;
-  extraInfo?: string;
 }
 
-export default function CardFooter({ time, location, extraInfo }: Props) {
-  if (!time && !location && !extraInfo) return null;
+export default function EventFooter({ time, location }: Props) {
+  if (!time && !location) return null;
 
   return (
     <div className="mt-auto pt-4 border-t border-gray-100 space-y-1 text-sm text-gray-700">
@@ -22,12 +21,6 @@ export default function CardFooter({ time, location, extraInfo }: Props) {
         <div className="flex items-center gap-2">
           <MapPin className="w-4 h-4" />
           {location.name}
-        </div>
-      )}
-      {extraInfo && (
-        <div className="flex items-center gap-2">
-          <MapPin className="w-4 h-4" />
-          {extraInfo}
         </div>
       )}
     </div>

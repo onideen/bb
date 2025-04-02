@@ -35,7 +35,7 @@ const GenericPage = () => {
     try {
       const fetchableSections = pageData.sections.filter(isFetchableSection);
       const allData = await fetchItemsForSections(fetchableSections);
-      console.log(allData);
+
       setItems(allData);
     } catch (err: unknown) {
       setError((err as Error).message);

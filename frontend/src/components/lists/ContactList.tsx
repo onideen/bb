@@ -1,5 +1,4 @@
 import { PersonWithRole } from "../../types/content-types";
-import { mapPersonWithRoleToCardItem } from "../../utils/mapToCardItem";
 import { ContactCard } from "../cards";
 import ContentList from "./ContentList";
 
@@ -12,7 +11,7 @@ const ContactList = ({ title, contacts }: EventListProps) => {
   return (
     <ContentList
       title={title}
-      items={contacts.map(mapPersonWithRoleToCardItem)}
+      items={contacts.map((p) => ({ person: p }))}
       cardComponent={ContactCard}
     />
   );

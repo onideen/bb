@@ -50,11 +50,12 @@ export interface PageArticleList extends Struct.ComponentSchema {
 export interface PageContactList extends Struct.ComponentSchema {
   collectionName: 'components_page_contact_lists';
   info: {
+    description: '';
     displayName: 'contact_list';
     icon: 'envelop';
   };
   attributes: {
-    contacts: Schema.Attribute.Component<'shared.contact-entry', true>;
+    contacts: Schema.Attribute.Component<'shared.person-with-role', true>;
     description: Schema.Attribute.Text;
     title: Schema.Attribute.String;
   };

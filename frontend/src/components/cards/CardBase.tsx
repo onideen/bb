@@ -5,10 +5,11 @@ import MediaRenderer, { MediaAttributes } from "../MediaRenderer";
 
 interface CardBaseProps {
   image?: MediaAttributes;
-  url: string;
+  url?: string;
   title: string;
   imageHeight?: string; // f.eks. "h-48", "h-64", "h-72"
   children?: ReactNode;
+  footer?: ReactNode;
 }
 
 export default function CardBase({
@@ -17,6 +18,7 @@ export default function CardBase({
   title,
   imageHeight,
   children,
+  footer,
 }: CardBaseProps) {
   const [isLoading, setIsLoading] = useState(!!image);
   const resolvedImageHeight = imageHeight ?? "h-48";
@@ -59,7 +61,12 @@ export default function CardBase({
           <div className="absolute inset-0 animate-pulse bg-gray-200"></div>
         )}
       </div>
-      <div className="flex flex-col flex-grow p-5 gap-y-2">{children}</div>
+      <div className="flex flex-col flex-grow p-5 gap-y-2">
+        {children}
+        {footer && (
+          <div className="mt-auto pt-4 border-t border-gray-100">{footer}</div>
+        )}
+      </div>
     </CardWrapper>
   );
 }

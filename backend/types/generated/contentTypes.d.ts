@@ -671,11 +671,13 @@ export interface ApiPersonPerson extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    area: Schema.Attribute.String;
     articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     email: Schema.Attribute.Email;
+    has_concent: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     is_member: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

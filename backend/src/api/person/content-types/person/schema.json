@@ -22,12 +22,13 @@
       "type": "email"
     },
     "profile_picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "is_member": {
       "type": "boolean",
@@ -38,6 +39,13 @@
       "relation": "manyToMany",
       "target": "api::article.article",
       "mappedBy": "authors"
+    },
+    "has_concent": {
+      "type": "boolean",
+      "default": false
+    },
+    "area": {
+      "type": "string"
     }
   }
 }

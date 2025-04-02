@@ -26,12 +26,6 @@ export function mapArticleToCardItem(article: Article): ContentItem {
   };
 }
 
-export function mapPersonWithRoleToCardItem(
-  person_with_role: PersonWithRole
-): ContentItem {
-  return {
-    id: person_with_role.person.id,
-    title: person_with_role.person.name,
-    url: "test",
-  };
+export function mapPersonWithRoleToCardProps(p: PersonWithRole) {
+  return { person: p };
 }

@@ -108,10 +108,13 @@ export interface Person {
   id: number;
   documentId: string;
   name: string;
+  image: MediaAttributes;
   phone_number: string;
+  has_consent: boolean;
   email: string;
   profile_picture: MediaAttributes;
   is_member: boolean;
+  area: string;
 }
 
 export interface PersonRole {
