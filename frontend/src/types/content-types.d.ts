@@ -171,7 +171,7 @@ export interface RichTextBlock extends DynamicBlock {
 export interface ContactList extends DynamicBlock {
   __component: "page.contact-list";
   title: string;
-  people: PersonWithRole[];
+  contacts: PersonWithRole[];
 }
 
 export interface MediaBlock extends DynamicBlock {

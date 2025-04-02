@@ -3,6 +3,7 @@ import MediaRenderer from "./MediaRenderer";
 import { Section, SectionContentMap } from "../types/content-types";
 import ArticleList from "./lists/ArticleList";
 import EventList from "./lists/EventList";
+import ContactList from "./lists/ContactList";
 
 interface Props {
   sections?: Section[];
@@ -46,13 +47,11 @@ export default function SectionRenderer({ sections, sectionContent }: Props) {
 
           case "page.contact-list": {
             return (
-              <p>Ikke implementert visning</p>
-              /*
               <ContactList
                 key={index}
                 title={section.title}
-                contacts={section.people}
-              /> */
+                contacts={section.contacts}
+              />
             );
           }
 

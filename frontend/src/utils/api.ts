@@ -25,7 +25,19 @@ export const fetchPageData = async (path: string): Promise<Page | null> => {
         filters: { path: { $eq: "/" + path } },
         populate: {
           cover: { populate: "*" },
-          sections: { populate: "*" },
+
+          sections: {
+            populate: {
+              contacts: {
+                populate: {
+                  person: {
+                    populate: "*", // eller bare true for alt
+                  },
+                },
+              },
+              categories: "*", // for article/event-lister
+            },
+          },
         },
       },
     });

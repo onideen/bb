@@ -1,12 +1,12 @@
-import React, { JSX, ReactElement } from "react";
+import { ReactElement } from "react";
 
-interface Props<T extends JSX.IntrinsicAttributes> {
+interface Props<T> {
   title: string;
   items: T[];
   cardComponent: (props: T) => ReactElement;
 }
 
-function ContentList<T>({
+function ContentList<T extends object>({
   title,
   items,
   cardComponent: CardComponent,
