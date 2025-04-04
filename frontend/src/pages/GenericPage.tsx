@@ -1,10 +1,12 @@
 import PageContent from "../components/PageContent";
 import { useCallback, useEffect, useState } from "react";
-import { fetchItemsForSections, fetchPageData } from "../utils/api";
+import { fetchItemsForSections } from "../utils/api";
 import SectionRenderer from "../components/SectionRenderer";
 import { useParams } from "react-router-dom";
 import { Page, SectionContentMap } from "../types/content-types";
 import { isFetchableSection } from "../utils/typeGuards";
+import { fetchPageData } from "../utils/fetchPageDataGraphQL";
+import { mapGraphQLPageToPage } from "../utils/mapGraphqlToClient";
 
 const GenericPage = () => {
   const { path } = useParams<{ path: string }>();
@@ -20,7 +22,12 @@ const GenericPage = () => {
   const loadPageData = useCallback(async () => {
     try {
       const page = await fetchPageData(resolvedPath);
-      setPageData(page);
+      if (!page) {
+        setError("Fant ikke side");
+        return;
+      }
+      const mapped = mapGraphQLPageToPage(page);
+      setPageData(mapped);
     } catch (err: unknown) {
       setError((err as Error).message);
     } finally {
@@ -54,6 +61,7 @@ const GenericPage = () => {
     loadItemsForSections();
   }, [loadItemsForSections]);
 
+  console.log(pageData);
   if (loading) return <p>Laster...</p>;
   if (error) return <p>Feil: {error}</p>;
   if (!pageData) return <p>Fant ikke siden.</p>; // Hindrer videre kjøring

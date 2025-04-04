@@ -14,7 +14,6 @@ interface ImgAttributes {
 }
 
 export interface MediaAttributes {
-  id: number;
   documentId: string;
   url: string;
   alternativeText?: string;
@@ -28,11 +27,11 @@ export interface MediaAttributes {
 }
 
 type MediaRendererProps = {
-  file?: MediaAttributes, 
-  className?: string
-} & React.ImgHTMLAttributes<HTMLImageElement>
+  file?: MediaAttributes;
+  className?: string;
+} & React.ImgHTMLAttributes<HTMLImageElement>;
 
-const MediaRenderer = ({ file, className, ...props }: MediaRendererProps ) => {
+const MediaRenderer = ({ file, className, ...props }: MediaRendererProps) => {
   if (!file) return null;
 
   const imageSrc = getOptimalImage(file);
@@ -47,5 +46,4 @@ const MediaRenderer = ({ file, className, ...props }: MediaRendererProps ) => {
   );
 };
 
-      
 export default MediaRenderer;

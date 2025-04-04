@@ -5,6 +5,7 @@ import CardHeader from "./CardHeader";
 import CardTags from "./CardTags";
 import CardOrganizers from "./CardOrganizers";
 import EventFooter from "./EventFooter";
+import { Calendar } from "lucide-react";
 
 interface Props {
   title: string;
@@ -30,6 +31,11 @@ export default function EventCard({
       title={title}
       url={url}
       image={image}
+      imageFallback={
+        <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+          <Calendar className="w-8 h-8" />
+        </div>
+      }
       footer={<EventFooter time={time} location={location} />}
     >
       <CardHeader title={title} />

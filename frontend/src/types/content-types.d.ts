@@ -123,16 +123,12 @@ export interface PersonRole {
 }
 
 export interface Page {
-  id: number;
   documentId: string;
   title: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  slug: sting;
   cover: MediaAttributes;
-  blocks: Section[];
-  articles: Article[];
   sections: Section[];
 }
 
@@ -143,7 +139,7 @@ export interface DynamicBlock {
 
 export interface FetchableSection<T> extends DynamicBlock {
   apiType: string;
-  dataType: T[];
+  dataType: T;
   categories?: Category[];
   filter_type: string;
   limit?: number;
@@ -151,6 +147,7 @@ export interface FetchableSection<T> extends DynamicBlock {
 
 export interface ArticleList extends FetchableSection<Article> {
   __component: "page.article-list";
+  __typename: "ComponentPageArticleList";
   apiType: "articles";
   filter_type: "latest" | "featured";
   title: string;
@@ -158,6 +155,7 @@ export interface ArticleList extends FetchableSection<Article> {
 
 export interface EventList extends FetchableSection<Event> {
   __component: "page.event-list";
+  __typename: "ComponentPageEventList";
   apiType: "events";
   filter_type: "upcoming" | "past" | "featured" | "this_month" | "next_month";
   title: string;
@@ -165,17 +163,20 @@ export interface EventList extends FetchableSection<Event> {
 
 export interface RichTextBlock extends DynamicBlock {
   __component: "shared.rich-text";
+  __typename: "ComponentSharedRichText";
   innhold: BlocksContent;
 }
 
 export interface ContactList extends DynamicBlock {
   __component: "page.contact-list";
+  __typename: "ComponentPageContactList";
   title: string;
   contacts: PersonWithRole[];
 }
 
 export interface MediaBlock extends DynamicBlock {
   __component: "shared.media";
+  __typename: "ComponentSharedMedia";
   file: MediaAttributes;
 }
 
