@@ -4,6 +4,7 @@ import { Section, SectionContentMap } from "../types/content-types";
 import ArticleList from "./lists/ArticleList";
 import EventList from "./lists/EventList";
 import ContactList from "./lists/ContactList";
+import SkeletonContentList from "./lists/SkeletonContentList";
 
 interface Props {
   sections?: Section[];
@@ -22,26 +23,26 @@ export default function SectionRenderer({ sections, sectionContent }: Props) {
       {sections.map((section, index) => {
         switch (section.__component) {
           case "page.article-list": {
+            const content = sectionContent?.[section.__component]?.[section.id];
+
+            if (!content)
+              return <SkeletonContentList key={index} title={section.title} />;
             return (
               <ArticleList
                 key={index}
                 title={section.title}
-                articles={
-                  sectionContent?.[section.__component]?.[section.id] ?? []
-                }
+                articles={content}
               />
             );
           }
 
           case "page.event-list": {
+            const content = sectionContent?.[section.__component]?.[section.id];
+
+            if (!content)
+              return <SkeletonContentList key={index} title={section.title} />;
             return (
-              <EventList
-                key={index}
-                title={section.title}
-                events={
-                  sectionContent?.[section.__component]?.[section.id] ?? []
-                }
-              />
+              <EventList key={index} title={section.title} events={content} />
             );
           }
 

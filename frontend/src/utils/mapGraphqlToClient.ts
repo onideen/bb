@@ -17,6 +17,7 @@ export function mapGraphQLSectionToClient(
     case "ComponentPageArticleList":
       return {
         ...section,
+        title: section.article_title,
         __component: "page.article-list",
         apiType: "articles",
         filter_type: section.articleFilterType,
@@ -25,6 +26,7 @@ export function mapGraphQLSectionToClient(
     case "ComponentPageEventList":
       return {
         ...section,
+        title: section.event_title,
         __component: "page.event-list",
         apiType: "events",
         filter_type: section.eventFilterType,

@@ -18,6 +18,10 @@ const GenericPage = () => {
   const [items, setItems] = useState<SectionContentMap>({});
   const [error, setError] = useState<string | null>(null);
 
+  function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   // Henter seksjonskonfigurasjon (første API-kall)
   useEffect(() => {
     const load = async () => {
@@ -39,6 +43,7 @@ const GenericPage = () => {
 
     const loadItems = async () => {
       try {
+        await sleep(2000);
         const fetchableSections = pageData.sections.filter(isFetchableSection);
         const allData = await fetchItemsForSections(fetchableSections);
         setItems(allData);
@@ -49,6 +54,7 @@ const GenericPage = () => {
     loadItems();
   }, [pageData]);
 
+  if (!pageData) return <LoadingFallback />;
   if (error) return <p>Feil: {error}</p>;
   if (!pageData) return <p>Laster sideinnhold...</p>; // Kun første gang
 
