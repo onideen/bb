@@ -33,6 +33,7 @@ export const fetchPageData = async (
             article_title: title
             article_filter_type: filter_type
             categories {
+              id
               documentId
               name
             }
@@ -45,6 +46,7 @@ export const fetchPageData = async (
             event_filter_type: filter_type
             limit
             categories {
+              id
               documentId
               name
             }
