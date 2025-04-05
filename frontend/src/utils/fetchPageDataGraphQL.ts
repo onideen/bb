@@ -68,7 +68,7 @@ export const fetchPageData = async (
                 email
                 phone_number
                 area
-                has_concent
+                has_consented_to_share_information
                 is_member
                 profile_picture {
                   url

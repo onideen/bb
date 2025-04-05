@@ -12,7 +12,9 @@ export default function ContactCard({ person }: Props) {
 
   const shouldShowFooter =
     !!p.area ||
-    (person.show_contact_info && p.has_concent && (p.phone_number || p.email));
+    (person.show_contact_info &&
+      p.has_consented_to_share_information &&
+      (p.phone_number || p.email));
 
   const footer = shouldShowFooter ? (
     <div className="space-y-1 text-sm text-gray-600">
@@ -22,18 +24,22 @@ export default function ContactCard({ person }: Props) {
           <span>{p.area}</span>
         </div>
       )}
-      {person.show_contact_info && p.has_concent && p.phone_number && (
-        <div className="flex items-center gap-2">
-          <Phone className="w-4 h-4" />
-          <span>{p.phone_number}</span>
-        </div>
-      )}
-      {person.show_contact_info && p.has_concent && p.email && (
-        <div className="flex items-center gap-2">
-          <Mail className="w-4 h-4" />
-          <span>{p.email}</span>
-        </div>
-      )}
+      {person.show_contact_info &&
+        p.has_consented_to_share_information &&
+        p.phone_number && (
+          <div className="flex items-center gap-2">
+            <Phone className="w-4 h-4" />
+            <span>{p.phone_number}</span>
+          </div>
+        )}
+      {person.show_contact_info &&
+        p.has_consented_to_share_information &&
+        p.email && (
+          <div className="flex items-center gap-2">
+            <Mail className="w-4 h-4" />
+            <span>{p.email}</span>
+          </div>
+        )}
     </div>
   ) : null;
 
@@ -57,7 +63,7 @@ export default function ContactCard({ person }: Props) {
         <div className="text-sm text-gray-500 italic">{person.role}</div>
       )}
 
-      {person.show_contact_info && p.has_concent && (
+      {person.show_contact_info && p.has_consented_to_share_information && (
         <div className="text-sm text-gray-700 mt-2 space-y-1">
           {p.phone_number && (
             <div>

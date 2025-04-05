@@ -25,10 +25,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
+      "allowedTypes": ["images", "files"]
     },
     "is_member": {
       "type": "boolean",
@@ -40,7 +37,7 @@
       "target": "api::article.article",
       "mappedBy": "authors"
     },
-    "has_concent": {
+    "has_consented_to_share_information": {
       "type": "boolean",
       "default": false
     },
