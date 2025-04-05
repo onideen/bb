@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "codegen": "graphql-codegen",
+    "codegen:watch": "graphql-codegen --watch"
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.10",
@@ -15,6 +17,7 @@
     "@strapi/client": "^1.0.1",
     "axios": "^1.7.9",
     "flowbite-react": "^0.10.2",
+    "graphql-request": "^7.1.2",
     "lucide-react": "^0.485.0",
     "path": "^0.12.7",
     "react": "^19.0.0",
@@ -26,6 +29,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@graphql-codegen/cli": "5.0.5",
+    "@graphql-codegen/client-preset": "4.8.0",
+    "@parcel/watcher": "^2.5.1",
     "@tailwindcss/typography": "^0.5.16",
     "@types/material-ui": "^0.21.18",
     "@types/node": "^22.13.14",

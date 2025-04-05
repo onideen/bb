@@ -1,0 +1,6 @@
+fragment MediaComponentFields on ComponentSharedMedia {
+  id
+  file {
+    ...MediaFields
+  }
+}

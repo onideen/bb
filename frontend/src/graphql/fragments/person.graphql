@@ -1,0 +1,10 @@
+fragment PersonFields on Person {
+  name
+  email
+  phone_number
+  area
+  # description
+  profile_picture {
+    ...MediaFields
+  }
+}

@@ -1,0 +1,10 @@
+fragment ArticleListFields on ComponentPageArticleList {
+  id
+  article_title: title
+  article_filter_type: filter_type
+  limit
+  categories {
+    documentId
+    name
+  }
+}

@@ -1,0 +1,16 @@
+fragment ContactFields on ComponentPageContactList {
+  id
+  title
+  description
+  contacts {
+    id
+    role
+    show_contact_info
+    show_description
+    show_image
+    show_role
+    person {
+      ...PersonFields
+    }
+  }
+}

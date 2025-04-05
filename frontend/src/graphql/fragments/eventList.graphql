@@ -1,0 +1,10 @@
+fragment EventListFields on ComponentPageEventList {
+  id
+  event_title: title
+  event_filter_type: filter_type
+  limit
+  categories {
+    documentId
+    name
+  }
+}

@@ -1,0 +1,18 @@
+query GetPageByPath($path: String!) {
+  pages(filters: { path: { eq: $path } }) {
+    documentId
+    title
+    path
+    cover {
+      ...MediaFields
+    }
+    sections {
+      __typename
+      ...ArticleListFields
+      ...EventListFields
+      ...ContactFields
+      ...RichTextFields
+      ...MediaComponentFields
+    }
+  }
+}

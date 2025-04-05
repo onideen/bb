@@ -1,0 +1,7 @@
+fragment MediaFields on UploadFile {
+  url
+  alternativeText
+  formats
+  mime
+  documentId
+}
