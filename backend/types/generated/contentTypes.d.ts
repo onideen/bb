@@ -1,22 +1,22 @@
-import type { Schema, Struct } from "@strapi/strapi";
+import type { Schema, Struct } from '@strapi/strapi';
 
 export interface AdminApiToken extends Struct.CollectionTypeSchema {
-  collectionName: "strapi_api_tokens";
+  collectionName: 'strapi_api_tokens';
   info: {
-    description: "";
-    displayName: "Api Token";
-    name: "Api Token";
-    pluralName: "api-tokens";
-    singularName: "api-token";
+    description: '';
+    displayName: 'Api Token';
+    name: 'Api Token';
+    pluralName: 'api-tokens';
+    singularName: 'api-token';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
@@ -27,18 +27,18 @@ export interface AdminApiToken extends Struct.CollectionTypeSchema {
         minLength: 1;
       }>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.String &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 1;
       }> &
-      Schema.Attribute.DefaultTo<"">;
+      Schema.Attribute.DefaultTo<''>;
     expiresAt: Schema.Attribute.DateTime;
     lastUsedAt: Schema.Attribute.DateTime;
     lifespan: Schema.Attribute.BigInteger;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<"oneToMany", "admin::api-token"> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'admin::api-token'> &
       Schema.Attribute.Private;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -47,36 +47,36 @@ export interface AdminApiToken extends Struct.CollectionTypeSchema {
         minLength: 1;
       }>;
     permissions: Schema.Attribute.Relation<
-      "oneToMany",
-      "admin::api-token-permission"
+      'oneToMany',
+      'admin::api-token-permission'
     >;
     publishedAt: Schema.Attribute.DateTime;
-    type: Schema.Attribute.Enumeration<["read-only", "full-access", "custom"]> &
+    type: Schema.Attribute.Enumeration<['read-only', 'full-access', 'custom']> &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<"read-only">;
+      Schema.Attribute.DefaultTo<'read-only'>;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface AdminApiTokenPermission extends Struct.CollectionTypeSchema {
-  collectionName: "strapi_api_token_permissions";
+  collectionName: 'strapi_api_token_permissions';
   info: {
-    description: "";
-    displayName: "API Token Permission";
-    name: "API Token Permission";
-    pluralName: "api-token-permissions";
-    singularName: "api-token-permission";
+    description: '';
+    displayName: 'API Token Permission';
+    name: 'API Token Permission';
+    pluralName: 'api-token-permissions';
+    singularName: 'api-token-permission';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
@@ -87,39 +87,39 @@ export interface AdminApiTokenPermission extends Struct.CollectionTypeSchema {
         minLength: 1;
       }>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "admin::api-token-permission"
+      'oneToMany',
+      'admin::api-token-permission'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    token: Schema.Attribute.Relation<"manyToOne", "admin::api-token">;
+    token: Schema.Attribute.Relation<'manyToOne', 'admin::api-token'>;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface AdminPermission extends Struct.CollectionTypeSchema {
-  collectionName: "admin_permissions";
+  collectionName: 'admin_permissions';
   info: {
-    description: "";
-    displayName: "Permission";
-    name: "Permission";
-    pluralName: "permissions";
-    singularName: "permission";
+    description: '';
+    displayName: 'Permission';
+    name: 'Permission';
+    pluralName: 'permissions';
+    singularName: 'permission';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
@@ -132,41 +132,41 @@ export interface AdminPermission extends Struct.CollectionTypeSchema {
     actionParameters: Schema.Attribute.JSON & Schema.Attribute.DefaultTo<{}>;
     conditions: Schema.Attribute.JSON & Schema.Attribute.DefaultTo<[]>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<"oneToMany", "admin::permission"> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'admin::permission'> &
       Schema.Attribute.Private;
     properties: Schema.Attribute.JSON & Schema.Attribute.DefaultTo<{}>;
     publishedAt: Schema.Attribute.DateTime;
-    role: Schema.Attribute.Relation<"manyToOne", "admin::role">;
+    role: Schema.Attribute.Relation<'manyToOne', 'admin::role'>;
     subject: Schema.Attribute.String &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 1;
       }>;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface AdminRole extends Struct.CollectionTypeSchema {
-  collectionName: "admin_roles";
+  collectionName: 'admin_roles';
   info: {
-    description: "";
-    displayName: "Role";
-    name: "Role";
-    pluralName: "roles";
-    singularName: "role";
+    description: '';
+    displayName: 'Role';
+    name: 'Role';
+    pluralName: 'roles';
+    singularName: 'role';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
@@ -178,11 +178,11 @@ export interface AdminRole extends Struct.CollectionTypeSchema {
         minLength: 1;
       }>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<"oneToMany", "admin::role"> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'admin::role'> &
       Schema.Attribute.Private;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -190,32 +190,32 @@ export interface AdminRole extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         minLength: 1;
       }>;
-    permissions: Schema.Attribute.Relation<"oneToMany", "admin::permission">;
+    permissions: Schema.Attribute.Relation<'oneToMany', 'admin::permission'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users: Schema.Attribute.Relation<"manyToMany", "admin::user">;
+    users: Schema.Attribute.Relation<'manyToMany', 'admin::user'>;
   };
 }
 
 export interface AdminTransferToken extends Struct.CollectionTypeSchema {
-  collectionName: "strapi_transfer_tokens";
+  collectionName: 'strapi_transfer_tokens';
   info: {
-    description: "";
-    displayName: "Transfer Token";
-    name: "Transfer Token";
-    pluralName: "transfer-tokens";
-    singularName: "transfer-token";
+    description: '';
+    displayName: 'Transfer Token';
+    name: 'Transfer Token';
+    pluralName: 'transfer-tokens';
+    singularName: 'transfer-token';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
@@ -226,20 +226,20 @@ export interface AdminTransferToken extends Struct.CollectionTypeSchema {
         minLength: 1;
       }>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.String &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 1;
       }> &
-      Schema.Attribute.DefaultTo<"">;
+      Schema.Attribute.DefaultTo<''>;
     expiresAt: Schema.Attribute.DateTime;
     lastUsedAt: Schema.Attribute.DateTime;
     lifespan: Schema.Attribute.BigInteger;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "admin::transfer-token"
+      'oneToMany',
+      'admin::transfer-token'
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String &
@@ -249,34 +249,34 @@ export interface AdminTransferToken extends Struct.CollectionTypeSchema {
         minLength: 1;
       }>;
     permissions: Schema.Attribute.Relation<
-      "oneToMany",
-      "admin::transfer-token-permission"
+      'oneToMany',
+      'admin::transfer-token-permission'
     >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface AdminTransferTokenPermission
   extends Struct.CollectionTypeSchema {
-  collectionName: "strapi_transfer_token_permissions";
+  collectionName: 'strapi_transfer_token_permissions';
   info: {
-    description: "";
-    displayName: "Transfer Token Permission";
-    name: "Transfer Token Permission";
-    pluralName: "transfer-token-permissions";
-    singularName: "transfer-token-permission";
+    description: '';
+    displayName: 'Transfer Token Permission';
+    name: 'Transfer Token Permission';
+    pluralName: 'transfer-token-permissions';
+    singularName: 'transfer-token-permission';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
@@ -287,39 +287,39 @@ export interface AdminTransferTokenPermission
         minLength: 1;
       }>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "admin::transfer-token-permission"
+      'oneToMany',
+      'admin::transfer-token-permission'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    token: Schema.Attribute.Relation<"manyToOne", "admin::transfer-token">;
+    token: Schema.Attribute.Relation<'manyToOne', 'admin::transfer-token'>;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface AdminUser extends Struct.CollectionTypeSchema {
-  collectionName: "admin_users";
+  collectionName: 'admin_users';
   info: {
-    description: "";
-    displayName: "User";
-    name: "User";
-    pluralName: "users";
-    singularName: "user";
+    description: '';
+    displayName: 'User';
+    name: 'User';
+    pluralName: 'users';
+    singularName: 'user';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
@@ -328,7 +328,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private &
       Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
@@ -349,7 +349,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
         minLength: 1;
       }>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<"oneToMany", "admin::user"> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'admin::user'> &
       Schema.Attribute.Private;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
@@ -360,38 +360,38 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     registrationToken: Schema.Attribute.String & Schema.Attribute.Private;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
-    roles: Schema.Attribute.Relation<"manyToMany", "admin::role"> &
+    roles: Schema.Attribute.Relation<'manyToMany', 'admin::role'> &
       Schema.Attribute.Private;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     username: Schema.Attribute.String;
   };
 }
 
 export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
-  collectionName: "articles";
+  collectionName: 'articles';
   info: {
-    description: "";
-    displayName: "Article";
-    pluralName: "articles";
-    singularName: "article";
+    description: '';
+    displayName: 'Article';
+    pluralName: 'articles';
+    singularName: 'article';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    authors: Schema.Attribute.Relation<"manyToMany", "api::person.person">;
+    authors: Schema.Attribute.Relation<'manyToMany', 'api::person.person'>;
     blocks: Schema.Attribute.DynamicZone<
-      ["shared.media", "shared.quote", "shared.rich-text", "shared.slider"]
+      ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
     >;
     categories: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::category.category"
+      'oneToMany',
+      'api::category.category'
     >;
-    cover: Schema.Attribute.Media<"images" | "files" | "videos">;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text &
       Schema.Attribute.SetMinMaxLength<{
@@ -399,25 +399,25 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::article.article"
+      'oneToMany',
+      'api::article.article'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<"title">;
+    slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
-  collectionName: "categories";
+  collectionName: 'categories';
   info: {
-    displayName: "Category";
-    pluralName: "categories";
-    singularName: "category";
+    displayName: 'Category';
+    pluralName: 'categories';
+    singularName: 'category';
   };
   options: {
     draftAndPublish: false;
@@ -425,14 +425,14 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   attributes: {
     color: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     icon: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::category.category"
+      'oneToMany',
+      'api::category.category'
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
@@ -440,43 +440,43 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     show_as_tag: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface ApiEventEvent extends Struct.CollectionTypeSchema {
-  collectionName: "events";
+  collectionName: 'events';
   info: {
-    description: "";
-    displayName: "event";
-    pluralName: "events";
-    singularName: "event";
+    description: '';
+    displayName: 'event';
+    pluralName: 'events';
+    singularName: 'event';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     categories: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::category.category"
+      'oneToMany',
+      'api::category.category'
     >;
     content: Schema.Attribute.DynamicZone<
-      ["shared.slider", "shared.rich-text", "shared.media"]
+      ['shared.slider', 'shared.rich-text', 'shared.media']
     >;
-    cover: Schema.Attribute.Media<"images" | "files" | "videos" | "audios">;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     end_time: Schema.Attribute.DateTime;
     event_state: Schema.Attribute.Enumeration<
-      ["planlagt", "publisert", "avlyst", "gjennomf\u00F8rt"]
+      ['planlagt', 'publisert', 'avlyst', 'gjennomf\u00F8rt']
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<"oneToMany", "api::event.event"> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
-    location: Schema.Attribute.Relation<"manyToOne", "api::location.location">;
-    organizers: Schema.Attribute.Component<"event.organizer-with-people", true>;
+    location: Schema.Attribute.Relation<'manyToOne', 'api::location.location'>;
+    organizers: Schema.Attribute.Component<'event.organizer-with-people', true>;
     publishedAt: Schema.Attribute.DateTime;
     registration_link: Schema.Attribute.String;
     requires_registration: Schema.Attribute.Boolean;
@@ -488,49 +488,49 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     start_time: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
-  collectionName: "globals";
+  collectionName: 'globals';
   info: {
-    description: "Define global settings";
-    displayName: "Global";
-    pluralName: "globals";
-    singularName: "global";
+    description: 'Define global settings';
+    displayName: 'Global';
+    pluralName: 'globals';
+    singularName: 'global';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    defaultSeo: Schema.Attribute.Component<"shared.seo", false>;
-    favicon: Schema.Attribute.Media<"images" | "files" | "videos">;
+    defaultSeo: Schema.Attribute.Component<'shared.seo', false>;
+    favicon: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::global.global"
+      'oneToMany',
+      'api::global.global'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     siteName: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
-  collectionName: "locations";
+  collectionName: 'locations';
   info: {
-    displayName: "Location";
-    pluralName: "locations";
-    singularName: "location";
+    displayName: 'Location';
+    pluralName: 'locations';
+    singularName: 'location';
   };
   options: {
     draftAndPublish: false;
@@ -539,14 +539,14 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
     address: Schema.Attribute.String;
     city: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    events: Schema.Attribute.Relation<"oneToMany", "api::event.event">;
+    events: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
     latitude: Schema.Attribute.Decimal;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::location.location"
+      'oneToMany',
+      'api::location.location'
     > &
       Schema.Attribute.Private;
     longitude: Schema.Attribute.Decimal;
@@ -555,126 +555,126 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
     postal_code: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface ApiNavbarNavbar extends Struct.CollectionTypeSchema {
-  collectionName: "navbars";
+  collectionName: 'navbars';
   info: {
-    description: "";
-    displayName: "Navbar";
-    pluralName: "navbars";
-    singularName: "navbar";
+    description: '';
+    displayName: 'Navbar';
+    pluralName: 'navbars';
+    singularName: 'navbar';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::navbar.navbar"
+      'oneToMany',
+      'api::navbar.navbar'
     > &
       Schema.Attribute.Private;
-    navbar_element: Schema.Attribute.Component<"navbar.navbar-element", true>;
+    navbar_element: Schema.Attribute.Component<'navbar.navbar-element', true>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface ApiOrganizerOrganizer extends Struct.CollectionTypeSchema {
-  collectionName: "organizers";
+  collectionName: 'organizers';
   info: {
-    displayName: "organizer";
-    pluralName: "organizers";
-    singularName: "organizer";
+    displayName: 'organizer';
+    pluralName: 'organizers';
+    singularName: 'organizer';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::organizer.organizer"
+      'oneToMany',
+      'api::organizer.organizer'
     > &
       Schema.Attribute.Private;
-    logo: Schema.Attribute.Media<"images" | "files">;
+    logo: Schema.Attribute.Media<'images' | 'files'>;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     website: Schema.Attribute.String;
   };
 }
 
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
-  collectionName: "pages";
+  collectionName: 'pages';
   info: {
-    description: "";
-    displayName: "Side";
-    pluralName: "pages";
-    singularName: "page";
+    description: '';
+    displayName: 'Side';
+    pluralName: 'pages';
+    singularName: 'page';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    cover: Schema.Attribute.Media<"images" | "videos">;
+    cover: Schema.Attribute.Media<'images' | 'videos'>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<"oneToMany", "api::page.page"> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
       Schema.Attribute.Private;
     path: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        "page.event-list",
-        "page.article-list",
-        "page.contact-list",
-        "shared.rich-text",
-        "shared.media",
+        'page.event-list',
+        'page.article-list',
+        'page.contact-list',
+        'shared.rich-text',
+        'shared.media',
       ]
     >;
     slug: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface ApiPersonPerson extends Struct.CollectionTypeSchema {
-  collectionName: "people";
+  collectionName: 'people';
   info: {
-    description: "";
-    displayName: "person";
-    pluralName: "people";
-    singularName: "person";
+    description: '';
+    displayName: 'person';
+    pluralName: 'people';
+    singularName: 'person';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
     area: Schema.Attribute.String;
-    articles: Schema.Attribute.Relation<"manyToMany", "api::article.article">;
+    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     email: Schema.Attribute.Email;
     has_consented_to_share_information: Schema.Attribute.Boolean &
@@ -682,51 +682,51 @@ export interface ApiPersonPerson extends Struct.CollectionTypeSchema {
     is_member: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "api::person.person"
+      'oneToMany',
+      'api::person.person'
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     phone_number: Schema.Attribute.String;
-    profile_picture: Schema.Attribute.Media<"images" | "files">;
+    profile_picture: Schema.Attribute.Media<'images' | 'files'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
-  collectionName: "strapi_releases";
+  collectionName: 'strapi_releases';
   info: {
-    displayName: "Release";
-    pluralName: "releases";
-    singularName: "release";
+    displayName: 'Release';
+    pluralName: 'releases';
+    singularName: 'release';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
   attributes: {
     actions: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::content-releases.release-action"
+      'oneToMany',
+      'plugin::content-releases.release-action'
     >;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::content-releases.release"
+      'oneToMany',
+      'plugin::content-releases.release'
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
@@ -734,90 +734,90 @@ export interface PluginContentReleasesRelease
     releasedAt: Schema.Attribute.DateTime;
     scheduledAt: Schema.Attribute.DateTime;
     status: Schema.Attribute.Enumeration<
-      ["ready", "blocked", "failed", "done", "empty"]
+      ['ready', 'blocked', 'failed', 'done', 'empty']
     > &
       Schema.Attribute.Required;
     timezone: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface PluginContentReleasesReleaseAction
   extends Struct.CollectionTypeSchema {
-  collectionName: "strapi_release_actions";
+  collectionName: 'strapi_release_actions';
   info: {
-    displayName: "Release Action";
-    pluralName: "release-actions";
-    singularName: "release-action";
+    displayName: 'Release Action';
+    pluralName: 'release-actions';
+    singularName: 'release-action';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
   attributes: {
     contentType: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     entryDocumentId: Schema.Attribute.String;
     isEntryValid: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::content-releases.release-action"
+      'oneToMany',
+      'plugin::content-releases.release-action'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     release: Schema.Attribute.Relation<
-      "manyToOne",
-      "plugin::content-releases.release"
+      'manyToOne',
+      'plugin::content-releases.release'
     >;
-    type: Schema.Attribute.Enumeration<["publish", "unpublish"]> &
+    type: Schema.Attribute.Enumeration<['publish', 'unpublish']> &
       Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface PluginI18NLocale extends Struct.CollectionTypeSchema {
-  collectionName: "i18n_locale";
+  collectionName: 'i18n_locale';
   info: {
-    collectionName: "locales";
-    description: "";
-    displayName: "Locale";
-    pluralName: "locales";
-    singularName: "locale";
+    collectionName: 'locales';
+    description: '';
+    displayName: 'Locale';
+    pluralName: 'locales';
+    singularName: 'locale';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
   attributes: {
     code: Schema.Attribute.String & Schema.Attribute.Unique;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::i18n.locale"
+      'oneToMany',
+      'plugin::i18n.locale'
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String &
@@ -830,43 +830,43 @@ export interface PluginI18NLocale extends Struct.CollectionTypeSchema {
       >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface PluginReviewWorkflowsWorkflow
   extends Struct.CollectionTypeSchema {
-  collectionName: "strapi_workflows";
+  collectionName: 'strapi_workflows';
   info: {
-    description: "";
-    displayName: "Workflow";
-    name: "Workflow";
-    pluralName: "workflows";
-    singularName: "workflow";
+    description: '';
+    displayName: 'Workflow';
+    name: 'Workflow';
+    pluralName: 'workflows';
+    singularName: 'workflow';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
   attributes: {
     contentTypes: Schema.Attribute.JSON &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<"[]">;
+      Schema.Attribute.DefaultTo<'[]'>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::review-workflows.workflow"
+      'oneToMany',
+      'plugin::review-workflows.workflow'
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String &
@@ -874,81 +874,81 @@ export interface PluginReviewWorkflowsWorkflow
       Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
     stageRequiredToPublish: Schema.Attribute.Relation<
-      "oneToOne",
-      "plugin::review-workflows.workflow-stage"
+      'oneToOne',
+      'plugin::review-workflows.workflow-stage'
     >;
     stages: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::review-workflows.workflow-stage"
+      'oneToMany',
+      'plugin::review-workflows.workflow-stage'
     >;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface PluginReviewWorkflowsWorkflowStage
   extends Struct.CollectionTypeSchema {
-  collectionName: "strapi_workflows_stages";
+  collectionName: 'strapi_workflows_stages';
   info: {
-    description: "";
-    displayName: "Stages";
-    name: "Workflow Stage";
-    pluralName: "workflow-stages";
-    singularName: "workflow-stage";
+    description: '';
+    displayName: 'Stages';
+    name: 'Workflow Stage';
+    pluralName: 'workflow-stages';
+    singularName: 'workflow-stage';
   };
   options: {
     draftAndPublish: false;
-    version: "1.1.0";
+    version: '1.1.0';
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
   attributes: {
-    color: Schema.Attribute.String & Schema.Attribute.DefaultTo<"#4945FF">;
+    color: Schema.Attribute.String & Schema.Attribute.DefaultTo<'#4945FF'>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::review-workflows.workflow-stage"
+      'oneToMany',
+      'plugin::review-workflows.workflow-stage'
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
-    permissions: Schema.Attribute.Relation<"manyToMany", "admin::permission">;
+    permissions: Schema.Attribute.Relation<'manyToMany', 'admin::permission'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     workflow: Schema.Attribute.Relation<
-      "manyToOne",
-      "plugin::review-workflows.workflow"
+      'manyToOne',
+      'plugin::review-workflows.workflow'
     >;
   };
 }
 
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
-  collectionName: "files";
+  collectionName: 'files';
   info: {
-    description: "";
-    displayName: "File";
-    pluralName: "files";
-    singularName: "file";
+    description: '';
+    displayName: 'File';
+    pluralName: 'files';
+    singularName: 'file';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
@@ -956,10 +956,10 @@ export interface PluginUploadFile extends Struct.CollectionTypeSchema {
     alternativeText: Schema.Attribute.String;
     caption: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     ext: Schema.Attribute.String;
-    folder: Schema.Attribute.Relation<"manyToOne", "plugin::upload.folder"> &
+    folder: Schema.Attribute.Relation<'manyToOne', 'plugin::upload.folder'> &
       Schema.Attribute.Private;
     folderPath: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -972,8 +972,8 @@ export interface PluginUploadFile extends Struct.CollectionTypeSchema {
     height: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::upload.file"
+      'oneToMany',
+      'plugin::upload.file'
     > &
       Schema.Attribute.Private;
     mime: Schema.Attribute.String & Schema.Attribute.Required;
@@ -982,10 +982,10 @@ export interface PluginUploadFile extends Struct.CollectionTypeSchema {
     provider: Schema.Attribute.String & Schema.Attribute.Required;
     provider_metadata: Schema.Attribute.JSON;
     publishedAt: Schema.Attribute.DateTime;
-    related: Schema.Attribute.Relation<"morphToMany">;
+    related: Schema.Attribute.Relation<'morphToMany'>;
     size: Schema.Attribute.Decimal & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     url: Schema.Attribute.String & Schema.Attribute.Required;
     width: Schema.Attribute.Integer;
@@ -993,33 +993,33 @@ export interface PluginUploadFile extends Struct.CollectionTypeSchema {
 }
 
 export interface PluginUploadFolder extends Struct.CollectionTypeSchema {
-  collectionName: "upload_folders";
+  collectionName: 'upload_folders';
   info: {
-    displayName: "Folder";
-    pluralName: "folders";
-    singularName: "folder";
+    displayName: 'Folder';
+    pluralName: 'folders';
+    singularName: 'folder';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
   attributes: {
-    children: Schema.Attribute.Relation<"oneToMany", "plugin::upload.folder">;
+    children: Schema.Attribute.Relation<'oneToMany', 'plugin::upload.folder'>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    files: Schema.Attribute.Relation<"oneToMany", "plugin::upload.file">;
+    files: Schema.Attribute.Relation<'oneToMany', 'plugin::upload.file'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::upload.folder"
+      'oneToMany',
+      'plugin::upload.folder'
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String &
@@ -1027,7 +1027,7 @@ export interface PluginUploadFolder extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         minLength: 1;
       }>;
-    parent: Schema.Attribute.Relation<"manyToOne", "plugin::upload.folder">;
+    parent: Schema.Attribute.Relation<'manyToOne', 'plugin::upload.folder'>;
     path: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
@@ -1038,84 +1038,84 @@ export interface PluginUploadFolder extends Struct.CollectionTypeSchema {
       Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface PluginUsersPermissionsPermission
   extends Struct.CollectionTypeSchema {
-  collectionName: "up_permissions";
+  collectionName: 'up_permissions';
   info: {
-    description: "";
-    displayName: "Permission";
-    name: "permission";
-    pluralName: "permissions";
-    singularName: "permission";
+    description: '';
+    displayName: 'Permission';
+    name: 'permission';
+    pluralName: 'permissions';
+    singularName: 'permission';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
   attributes: {
     action: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::users-permissions.permission"
+      'oneToMany',
+      'plugin::users-permissions.permission'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.Relation<
-      "manyToOne",
-      "plugin::users-permissions.role"
+      'manyToOne',
+      'plugin::users-permissions.role'
     >;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
 export interface PluginUsersPermissionsRole
   extends Struct.CollectionTypeSchema {
-  collectionName: "up_roles";
+  collectionName: 'up_roles';
   info: {
-    description: "";
-    displayName: "Role";
-    name: "role";
-    pluralName: "roles";
-    singularName: "role";
+    description: '';
+    displayName: 'Role';
+    name: 'role';
+    pluralName: 'roles';
+    singularName: 'role';
   };
   options: {
     draftAndPublish: false;
   };
   pluginOptions: {
-    "content-manager": {
+    'content-manager': {
       visible: false;
     };
-    "content-type-builder": {
+    'content-type-builder': {
       visible: false;
     };
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::users-permissions.role"
+      'oneToMany',
+      'plugin::users-permissions.role'
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String &
@@ -1124,30 +1124,30 @@ export interface PluginUsersPermissionsRole
         minLength: 3;
       }>;
     permissions: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::users-permissions.permission"
+      'oneToMany',
+      'plugin::users-permissions.permission'
     >;
     publishedAt: Schema.Attribute.DateTime;
     type: Schema.Attribute.String & Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     users: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::users-permissions.user"
+      'oneToMany',
+      'plugin::users-permissions.user'
     >;
   };
 }
 
 export interface PluginUsersPermissionsUser
   extends Struct.CollectionTypeSchema {
-  collectionName: "up_users";
+  collectionName: 'up_users';
   info: {
-    description: "";
-    displayName: "User";
-    name: "user";
-    pluralName: "users";
-    singularName: "user";
+    description: '';
+    displayName: 'User';
+    name: 'user';
+    pluralName: 'users';
+    singularName: 'user';
   };
   options: {
     draftAndPublish: false;
@@ -1158,7 +1158,7 @@ export interface PluginUsersPermissionsUser
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
@@ -1167,8 +1167,8 @@ export interface PluginUsersPermissionsUser
       }>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
-      "oneToMany",
-      "plugin::users-permissions.user"
+      'oneToMany',
+      'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
     password: Schema.Attribute.Password &
@@ -1180,11 +1180,11 @@ export interface PluginUsersPermissionsUser
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
     role: Schema.Attribute.Relation<
-      "manyToOne",
-      "plugin::users-permissions.role"
+      'manyToOne',
+      'plugin::users-permissions.role'
     >;
     updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     username: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -1195,35 +1195,35 @@ export interface PluginUsersPermissionsUser
   };
 }
 
-declare module "@strapi/strapi" {
+declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
-      "admin::api-token": AdminApiToken;
-      "admin::api-token-permission": AdminApiTokenPermission;
-      "admin::permission": AdminPermission;
-      "admin::role": AdminRole;
-      "admin::transfer-token": AdminTransferToken;
-      "admin::transfer-token-permission": AdminTransferTokenPermission;
-      "admin::user": AdminUser;
-      "api::article.article": ApiArticleArticle;
-      "api::category.category": ApiCategoryCategory;
-      "api::event.event": ApiEventEvent;
-      "api::global.global": ApiGlobalGlobal;
-      "api::location.location": ApiLocationLocation;
-      "api::navbar.navbar": ApiNavbarNavbar;
-      "api::organizer.organizer": ApiOrganizerOrganizer;
-      "api::page.page": ApiPagePage;
-      "api::person.person": ApiPersonPerson;
-      "plugin::content-releases.release": PluginContentReleasesRelease;
-      "plugin::content-releases.release-action": PluginContentReleasesReleaseAction;
-      "plugin::i18n.locale": PluginI18NLocale;
-      "plugin::review-workflows.workflow": PluginReviewWorkflowsWorkflow;
-      "plugin::review-workflows.workflow-stage": PluginReviewWorkflowsWorkflowStage;
-      "plugin::upload.file": PluginUploadFile;
-      "plugin::upload.folder": PluginUploadFolder;
-      "plugin::users-permissions.permission": PluginUsersPermissionsPermission;
-      "plugin::users-permissions.role": PluginUsersPermissionsRole;
-      "plugin::users-permissions.user": PluginUsersPermissionsUser;
+      'admin::api-token': AdminApiToken;
+      'admin::api-token-permission': AdminApiTokenPermission;
+      'admin::permission': AdminPermission;
+      'admin::role': AdminRole;
+      'admin::transfer-token': AdminTransferToken;
+      'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'admin::user': AdminUser;
+      'api::article.article': ApiArticleArticle;
+      'api::category.category': ApiCategoryCategory;
+      'api::event.event': ApiEventEvent;
+      'api::global.global': ApiGlobalGlobal;
+      'api::location.location': ApiLocationLocation;
+      'api::navbar.navbar': ApiNavbarNavbar;
+      'api::organizer.organizer': ApiOrganizerOrganizer;
+      'api::page.page': ApiPagePage;
+      'api::person.person': ApiPersonPerson;
+      'plugin::content-releases.release': PluginContentReleasesRelease;
+      'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
+      'plugin::review-workflows.workflow': PluginReviewWorkflowsWorkflow;
+      'plugin::review-workflows.workflow-stage': PluginReviewWorkflowsWorkflowStage;
+      'plugin::upload.file': PluginUploadFile;
+      'plugin::upload.folder': PluginUploadFolder;
+      'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
+      'plugin::users-permissions.role': PluginUsersPermissionsRole;
+      'plugin::users-permissions.user': PluginUsersPermissionsUser;
     }
   }
 }
