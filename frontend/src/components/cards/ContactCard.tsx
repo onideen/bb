@@ -10,8 +10,6 @@ interface Props {
 export default function ContactCard({ person }: Props) {
   const p = person.person;
 
-  console.log("ContactCard", person);
-
   const shouldShowFooter =
     !!p.area ||
     (person.show_contact_info && p.has_concent && (p.phone_number || p.email));
@@ -59,7 +57,7 @@ export default function ContactCard({ person }: Props) {
         <div className="text-sm text-gray-500 italic">{person.role}</div>
       )}
 
-      {person.show_contact_info && p.has_consent && (
+      {person.show_contact_info && p.has_concent && (
         <div className="text-sm text-gray-700 mt-2 space-y-1">
           {p.phone_number && (
             <div>
