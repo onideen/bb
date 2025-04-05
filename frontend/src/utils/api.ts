@@ -87,6 +87,7 @@ export const fetchItemsForSections = async <T>(
       };
 
       if (section.categories !== undefined && section.categories?.length > 0) {
+        console.log("CATEGORIES", section.categories);
         params.filters.categories = {
           id: { $in: section.categories?.map((cat) => cat.id).join(",") },
         };
