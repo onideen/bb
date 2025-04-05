@@ -10,7 +10,13 @@ interface Props {
 export default function ContactCard({ person }: Props) {
   const p = person.person;
 
-  const footer = p.area ? (
+  console.log("ContactCard", person);
+
+  const shouldShowFooter =
+    !!p.area ||
+    (person.show_contact_info && p.has_concent && (p.phone_number || p.email));
+
+  const footer = shouldShowFooter ? (
     <div className="space-y-1 text-sm text-gray-600">
       {p.area && (
         <div className="flex items-center gap-2">
@@ -18,13 +24,13 @@ export default function ContactCard({ person }: Props) {
           <span>{p.area}</span>
         </div>
       )}
-      {person.show_contact_info && p.has_consent && p.phone_number && (
+      {person.show_contact_info && p.has_concent && p.phone_number && (
         <div className="flex items-center gap-2">
           <Phone className="w-4 h-4" />
           <span>{p.phone_number}</span>
         </div>
       )}
-      {person.show_contact_info && p.has_consent && p.email && (
+      {person.show_contact_info && p.has_concent && p.email && (
         <div className="flex items-center gap-2">
           <Mail className="w-4 h-4" />
           <span>{p.email}</span>

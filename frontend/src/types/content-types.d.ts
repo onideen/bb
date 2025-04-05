@@ -110,7 +110,7 @@ export interface Person {
   name: string;
   image: MediaAttributes;
   phone_number: string;
-  has_consent: boolean;
+  has_concent: boolean;
   email: string;
   profile_picture: MediaAttributes;
   is_member: boolean;

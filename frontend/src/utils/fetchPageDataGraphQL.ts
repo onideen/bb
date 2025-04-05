@@ -68,6 +68,8 @@ export const fetchPageData = async (
                 email
                 phone_number
                 area
+                has_concent
+                is_member
                 profile_picture {
                   url
                   alternativeText
