@@ -62,7 +62,7 @@ export const fetchItemsForSections = async <T>(
     const requests = sections.map((section) => {
       const params: {
         filters: {
-          categories?: { id: { $in: string } };
+          categories?: { documentId: { $in: string } };
           start_time?: { $gte?: string; $lt?: string };
           is_featured?: { $eq: boolean };
         };
@@ -89,7 +89,9 @@ export const fetchItemsForSections = async <T>(
       if (section.categories !== undefined && section.categories?.length > 0) {
         console.log("CATEGORIES", section.categories);
         params.filters.categories = {
-          id: { $in: section.categories?.map((cat) => cat.id).join(",") },
+          documentId: {
+            $in: section.categories?.map((cat) => cat.documentId).join(","),
+          },
         };
       }
       if (section.filter_type === "featured") {
