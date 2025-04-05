@@ -1,5 +1,6 @@
 import { MediaAttributes } from "../components/MediaRenderer";
 import { PageSection } from "../types/graphql-types";
+const API_URL = import.meta.env.VITE_STRAPI_URL || "http://localhost:1337";
 
 export interface RawPageResponse {
   documentId: string;
@@ -95,7 +96,7 @@ export const fetchPageData = async (
   `;
 
   try {
-    const res = await fetch("http://localhost:1337/graphql", {
+    const res = await fetch(API_URL + "/graphql", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
