@@ -1,4 +1,5 @@
-import type { Core } from '@strapi/strapi';
+import type { Core } from "@strapi/strapi";
+import { personResolvers } from "./extensions/graphql/resolvers/person-resolvers";
 
 export default {
   /**
@@ -7,7 +8,16 @@ export default {
    *
    * This gives you an opportunity to extend code.
    */
-  register( { strapi }: { strapi: Core.Strapi } ) {},
+  register({ strapi }: { strapi: Core.Strapi }) {
+    strapi
+      .plugin("graphql")
+      .service("extension")
+      .use(({ nexus }) => ({
+        resolvers: {
+          ...personResolvers,
+        },
+      }));
+  },
 
   /**
    * An asynchronous bootstrap function that runs before
