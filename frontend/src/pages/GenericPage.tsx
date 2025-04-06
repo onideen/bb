@@ -17,11 +17,11 @@ const GenericPage = () => {
   const [pageData, setPageData] = useState<Page | null>(null);
   const [items, setItems] = useState<SectionContentMap>({});
   const [error, setError] = useState<string | null>(null);
-
+  /*
   function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
-
+*/
   // Henter seksjonskonfigurasjon (første API-kall)
   useEffect(() => {
     const load = async () => {
@@ -43,7 +43,7 @@ const GenericPage = () => {
 
     const loadItems = async () => {
       try {
-        await sleep(2000);
+        //        await sleep(5000);
         const fetchableSections = pageData.sections.filter(isFetchableSection);
         const allData = await fetchItemsForSections(fetchableSections);
         setItems(allData);
