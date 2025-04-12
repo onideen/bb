@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@plugins/*": ["src/plugins/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "allowSyntheticDefaultImports": true,
     "module": "CommonJS",
     "moduleResolution": "Node",
@@ -15,8 +20,8 @@
     "noImplicitThis": true,
     "outDir": "dist",
     "rootDir": ".",
-    
-    "types": ["node"] 
+
+    "types": ["node"]
   },
   "include": [
     // Include root files

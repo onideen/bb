@@ -25,8 +25,6 @@ export const personResolvers = {
           populate: "*",
         }
       );
-
-      return sanitizePerson(entry);
     },
   },
 };

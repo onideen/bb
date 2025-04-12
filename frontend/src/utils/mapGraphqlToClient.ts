@@ -20,16 +20,17 @@ export function mapGraphQLSectionToClient(
         title: section.article_title,
         __component: "page.article-list",
         apiType: "articles",
-        filter_type: section.articleFilterType,
+        filter_type: section.article_filter_type,
       };
 
     case "ComponentPageEventList":
+      console.log("EVENTLIST", section.event_filter_type);
       return {
         ...section,
         title: section.event_title,
         __component: "page.event-list",
         apiType: "events",
-        filter_type: section.eventFilterType,
+        filter_type: section.event_filter_type,
       };
 
     case "ComponentPageContactList":

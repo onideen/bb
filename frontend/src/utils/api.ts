@@ -110,6 +110,7 @@ export const fetchItemsForSections = async <T>(
             },
           },
         };
+        console.log("FILTER TYPE", section);
         if (section.filter_type === "upcoming") {
           params.filters.start_time = { $gte: new Date().toISOString() };
           params.sort = ["start_time:asc"];

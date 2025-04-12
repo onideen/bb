@@ -1,5 +1,6 @@
 import type { Core } from "@strapi/strapi";
 import { personResolvers } from "./extensions/graphql/resolvers/person-resolvers";
+import { eventResolvers } from "./extensions/graphql/resolvers/event-resolvers";
 
 export default {
   /**
@@ -12,9 +13,21 @@ export default {
     strapi
       .plugin("graphql")
       .service("extension")
-      .use(({ nexus }) => ({
+      .shadowCRUD("api::event.event");
+    //.disableAction("findOne"); // (valgfritt)
+
+    strapi
+      .plugin("graphql")
+      .service("extension")
+      .use(() => ({
+        typeDefs: `
+            extend type Query {
+              event(slug: String!): Event
+            }
+          `,
         resolvers: {
           ...personResolvers,
+          ...eventResolvers,
         },
       }));
   },
