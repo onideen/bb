@@ -44,29 +44,15 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "event_state": {
       "type": "enumeration",
-      "enum": [
-        "planlagt",
-        "publisert",
-        "avlyst",
-        "gjennomført"
-      ]
+      "enum": ["planlagt", "publisert", "avlyst", "gjennomført"]
     },
     "content": {
       "type": "dynamiczone",
-      "components": [
-        "shared.slider",
-        "shared.rich-text",
-        "shared.media"
-      ]
+      "components": ["shared.slider", "shared.rich-text", "shared.media"]
     },
     "categories": {
       "type": "relation",
