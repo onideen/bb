@@ -22,6 +22,7 @@ const GenericPage = () => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 */
+
   // Henter seksjonskonfigurasjon (første API-kall)
   useEffect(() => {
     const load = async () => {

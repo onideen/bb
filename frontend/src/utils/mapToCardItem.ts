@@ -6,7 +6,7 @@ export function mapEventToCardItem(event: Event): ContentItem {
   return {
     id: event.id,
     title: event.short_title || event.title,
-    url: `/arrangementer/${event.documentId}`,
+    url: `/arrangementer/${event.slug}`,
     image: event.cover ?? undefined,
     time: formatDate(event.start_time),
     location: event.location,

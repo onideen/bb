@@ -4,10 +4,10 @@ import CardBase from "./CardBase";
 import CardHeader from "./CardHeader";
 
 interface Props {
-  person: PersonWithRole;
+  personWithRole: PersonWithRole;
 }
 
-export default function ContactCard({ person }: Props) {
+export default function ContactCard({ personWithRole: person }: Props) {
   const p = person.person;
 
   const shouldShowFooter =

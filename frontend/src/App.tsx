@@ -11,7 +11,7 @@ const router = createHashRouter([
     element: <RootNavigation />,
     children: [
       { path: "/artikler/:id", element: <ArticlePage /> },
-      { path: "/arrangementer/:id", element: <EventPage /> },
+      { path: "/arrangementer/:slug", element: <EventPage /> },
       { path: "/:path?", element: <GenericPage /> },
     ],
   },

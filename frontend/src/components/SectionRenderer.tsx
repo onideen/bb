@@ -56,14 +56,14 @@ export default function SectionRenderer({ sections, sectionContent }: Props) {
             );
           }
 
-          case "shared.rich-text":
+          case "ComponentSharedRichText":
             return (
               <div className="prose" key={index}>
                 <BlocksRenderer content={section.innhold} />
               </div>
             );
 
-          case "shared.media":
+          case "ComponentSharedMedia":
             return <MediaRenderer file={section.file} key={index} />;
 
           default: {

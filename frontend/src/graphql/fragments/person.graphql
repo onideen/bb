@@ -3,7 +3,7 @@ fragment PersonFields on Person {
   email
   phone_number
   area
-  has_consent
+  #has_consented_to_contact
   # description
   profile_picture {
     ...MediaFields

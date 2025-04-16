@@ -20,6 +20,7 @@ export interface Event {
   id: number;
   documentId: string;
   title: string;
+  slug: string;
   short_title?: string;
   start_time: string;
   end_time?: string;
@@ -33,7 +34,7 @@ export interface Event {
   cover?: MediaAttributes | null;
   location: Location;
   content: Section[];
-  people: PersonRole[];
+  organizers: OrganizerInfo[];
   categories: Category[];
   organizers?: OrganizerInfo[];
 }
@@ -162,7 +163,7 @@ export interface EventList extends FetchableSection<Event> {
 }
 
 export interface RichTextBlock extends DynamicBlock {
-  __component: "shared.rich-text";
+  __component: "ComponentSharedRichText";
   __typename: "ComponentSharedRichText";
   innhold: BlocksContent;
 }
@@ -175,7 +176,7 @@ export interface ContactList extends DynamicBlock {
 }
 
 export interface MediaBlock extends DynamicBlock {
-  __component: "shared.media";
+  __component: "ComponentSharedMedia";
   __typename: "ComponentSharedMedia";
   file: MediaAttributes;
 }

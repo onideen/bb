@@ -30,8 +30,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
-    "@graphql-codegen/cli": "5.0.5",
+    "@graphql-codegen/cli": "^5.0.5",
     "@graphql-codegen/client-preset": "4.8.0",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-operations": "^4.6.0",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.2",
     "@parcel/watcher": "^2.5.1",
     "@tailwindcss/typography": "^0.5.16",
     "@types/material-ui": "^0.21.18",

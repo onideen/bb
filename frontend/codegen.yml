@@ -4,8 +4,10 @@ documents:
   - "src/graphql/**/*.graphql"
 
 generates:
-  src/graphql/generated.ts:
+  src/generated/graphql.ts:
     plugins:
       - typescript
       - typescript-operations
-      - typed-document-node
+      - typescript-react-apollo
+    config:
+      withHooks: true

@@ -42,13 +42,11 @@ export function mapGraphQLSectionToClient(
     case "ComponentSharedRichText":
       return {
         ...section,
-        __component: "shared.rich-text",
       };
 
     case "ComponentSharedMedia":
       return {
         ...section,
-        __component: "shared.media",
       };
 
     default:
