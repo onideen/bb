@@ -1,3 +1,5 @@
+import { Event } from "../types/content-types";
+
 const API_URL = import.meta.env.VITE_STRAPI_URL || "http://localhost:1337";
 
 export const fetchEventData = async (slug: string): Promise<Event | null> => {
@@ -85,7 +87,7 @@ query GetEventBySlug($slug: String!) {
     const json = await res.json();
     const raw = json?.data?.events?.[0];
 
-    return raw || null;
+    return (raw as Event) || null;
   } catch (error) {
     console.error("Feil ved henting av side fra GraphQL:", error);
     return null;

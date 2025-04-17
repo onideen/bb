@@ -34,7 +34,6 @@ export interface Event {
   cover?: MediaAttributes | null;
   location: Location;
   content: Section[];
-  organizers: OrganizerInfo[];
   categories: Category[];
   organizers?: OrganizerInfo[];
 }

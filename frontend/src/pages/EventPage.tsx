@@ -10,16 +10,17 @@ import { ContactCard } from "../components/cards";
 
 function EventPage() {
   const { slug } = useParams<{ slug: string }>();
-  const [event, setEvent] = useState<Event>();
+  const [event, setEvent] = useState<Event | null>(null);
 
   useEffect(() => {
     const load = async () => {
       if (!slug) return; // Sjekk at slug faktisk finnes
 
       try {
-        const event = await fetchEventData(slug);
-        //if (!page) return setError("Fant ikke side");
-        setEvent(event);
+        const loadedEvent = await fetchEventData(slug);
+        if (loadedEvent) {
+          setEvent(loadedEvent); // ✅ typesikker
+        }
       } catch (err: unknown) {
         console.error("Error fetching event data:", err);
         //setError((err as Error).message);
@@ -97,13 +98,13 @@ function EventPage() {
           </div>
 
           <aside className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-6 text-sm text-gray-800">
-            {event.organizers?.length > 0 && (
+            {(event.organizers?.length ?? 0) > 0 && (
               <div>
                 <h3 className="font-semibold text-gray-900 mb-4">
                   Arrangører og kontaktpersoner
                 </h3>
 
-                {event.organizers.map((orgBlock, i) => (
+                {event.organizers?.map((orgBlock, i) => (
                   <div
                     key={i}
                     className="mb-6 pb-4 border-b last:border-b-0 last:mb-0 last:pb-0"
