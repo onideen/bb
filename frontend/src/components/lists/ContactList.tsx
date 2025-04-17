@@ -11,7 +11,7 @@ const ContactList = ({ title, contacts }: EventListProps) => {
   return (
     <ContentList
       title={title}
-      items={contacts.map((p) => ({ person: p }))}
+      items={contacts.map((p) => ({ personWithRole: p }))}
       cardComponent={ContactCard}
     />
   );
