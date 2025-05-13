@@ -175,7 +175,7 @@ export interface ContactList extends DynamicBlock {
 }
 
 export interface MediaBlock extends DynamicBlock {
-  __component: "ComponentSharedMedia";
+  __component: "ComponentSharedMedia" | "shared.media";
   __typename: "ComponentSharedMedia";
   file: MediaAttributes;
 }
