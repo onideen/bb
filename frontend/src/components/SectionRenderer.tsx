@@ -63,6 +63,7 @@ export default function SectionRenderer({ sections, sectionContent }: Props) {
               </div>
             );
           
+          case "shared.media":
           case "ComponentSharedMedia":
             return <MediaRenderer file={section.file} key={index} />;
 
