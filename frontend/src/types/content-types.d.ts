@@ -162,7 +162,7 @@ export interface EventList extends FetchableSection<Event> {
 }
 
 export interface RichTextBlock extends DynamicBlock {
-  __component: "ComponentSharedRichText";
+  __component: "ComponentSharedRichText" | "shared.rich-text";
   __typename: "ComponentSharedRichText";
   innhold: BlocksContent;
 }
